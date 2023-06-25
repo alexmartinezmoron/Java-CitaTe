@@ -166,9 +166,16 @@ public class ConfiguracionInicial implements ApplicationListener<ContextRefreshe
             catalogoDeServicio3.setPrecio("5");
             catalogoDeServicio3.setEmpresa(empresa);
 
+            CatalogoDeServicio catalogoDeServicio4 = new CatalogoDeServicio();
+            catalogoDeServicio4.setNombre("Afeitado");
+            catalogoDeServicio4.setDescripcion("Rapado al cero");
+            catalogoDeServicio4.setPrecio("5");
+            catalogoDeServicio4.setEmpresa(empresa2);
+
             catalogoDeServicioRepository.save(catalogoDeServicio);
             catalogoDeServicioRepository.save(catalogoDeServicio2);
             catalogoDeServicioRepository.save(catalogoDeServicio3);
+            catalogoDeServicioRepository.save(catalogoDeServicio4);
             /// catalogo de servicios/////////////////////////////////////
 
             /// DISPONIBILIDADES///////////////////////////////////////////////

@@ -351,7 +351,7 @@ public class EmpleadoController extends MiControladorGenerico<Empleado> {
     }
 
     @PostMapping("/details/{id}")
-    public String details(@ModelAttribute(name ="reserva") ReservaDTO
+    public String reservarServicio(@ModelAttribute(name ="reserva") ReservaDTO
                           reservaDTO, Authentication authentication) {
 
         //Obtenemos el nombre de usuario logueado
