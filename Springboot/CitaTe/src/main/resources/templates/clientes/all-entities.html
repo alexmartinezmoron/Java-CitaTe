@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title th:text="${entity}"></title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="fondoallentities" >
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+
+</br></br></br>
+
+<div class="container">
+    <h3>Clientes</h3><br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+<!--            <th>Dia</th>-->
+            <th>Nombre Cliente</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Telefono</th>
+
+            <!-- Nueva columna para las acciones -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="clientedto : ${entities}">
+<!--            <td th:text="${disponibilidad.fecha}"></td>-->
+            <td th:text="${clientedto.nombreCliente}"></td>
+            <td th:text="${clientedto.apellido1Cliente}"></td>
+            <td th:text="${clientedto.apellido2Cliente}"></td>
+            <td th:text="${clientedto.telefono}"></td>
+
+            <td>
+                <a th:href="@{/clientes/{id}(id=${clientedto.id})}" class="btn btn-dark">Editar</a>
+                <a th:href="@{/clientes/delete/{id}(id=${clientedto.id})}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div class=" btn" style="background-color: #3f4c63">
+        <a th:class="nolink" href="/clientes/create" >Añadir nuevo Cliente</a>
+    </div>
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<div th:fragment="header">
+  <header class="header">
+  <div class="d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
+    <div>
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <img th:src="@{/img/logoazul.png}" alt="citatelogo" id="logocitate">
+      </a>
+    </div>
+
+    <ul class="nav nav-pills text-center" >
+      <li class="nav-item"><a href="#" class="nav-link active btn btn-dark" aria-current="page" data-bs-toggle="modal" data-bs-target="#loginModal" id="botonlogin">Login</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="botonregister">Registrate</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="clienteempresa">
+          <li><a class="dropdown-item" href="#" class="btn" data-bs-toggle="modal" data-bs-target="#clienteModal" id="botoncliente">Cliente</a></li>
+          <li><a class="dropdown-item" href="RegistroEmpresa1.html" class="btn" id="botonempresa">Empresa</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="#" class="nav-link" class="btn" id="botonidioma">Idioma</a></li>
+      <li class="nav-item"><a href="#" class="nav-link" class="btn" id="botonayuda">Ayuda</a></li>
+    </ul>
+  </div>
+  </header>
+</div>

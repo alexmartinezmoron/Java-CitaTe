@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+<link href="/webjars/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="CitaTe.css">
+
+<div th:fragment="modal">
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="alert alert-danger" th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div class="alert alert-success" th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title" id="loginModalLabel">LOGIN</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div id="accesologin" class=" modal-body d-flex container flex-column justify-content-center ">
+                    <!-- LOGIN -->
+                    <div class="justify-content-center">
+                        <img src="img/minilogoazul.png" class="col-2 ">
+                    </div>
+
+                    <div class="container">
+
+                        <div class="alert alert-danger" th:if="${param.error}">
+                            Usuario o contraseña incorrecto.
+                        </div>
+                        <div class="alert alert-success" th:if="${param.logout}">
+                            Has sido desconectado.
+                        </div>
+
+                        <div class="card-body">
+                            <form th:action="@{/login}" method="post">
+                                <div><label> Usuario : <input class="form-control" type="text" name="username"
+                                                              required/> </label></div>
+                                <div><label> Contraseña: <input class="form-control" type="password" name="password"
+                                                                required/> </label></div>
+                                </br>
+                                <div><input class="btn btn-primary" type="submit" value="Entrar" style="background-color: #1B263B;"/></div>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+                    <br><br>
+                    <div class="justify-content-center">
+                        <a href="usuarios/hasOlvidadoTuPassword">¿Has olvidado tu contraseña?</a><br><br>
+                        <button onclick="startSignIn()">Logearse con Google</button>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer justify-content-between">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

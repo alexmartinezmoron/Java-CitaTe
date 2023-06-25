@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body class="container">
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+  <main> <!--Todo el main-->
+    <section class="navegacion">
+      <div class="progress" id="barradeprogreso">
+        <div class="progress-bar" role="progressbar" style=" width: 60%; background-color: #76C893;"></div>
+      </div>
+      <img src="/img/fotogooglemaps.jpg"
+        alt="mapamaps" width="30%"><br>
+      <div>
+        <h2>MUESTRA TU LUGAR DE TRABAJO</h2> <br>
+        <!-- Creo un formulario para poder subir las cosas. Añadimos enctype="multipart/form-data" -->
+
+        <!-- Posteriormente añadimos en application-properties el tamaño máximo de foto que vamos a poder recibir -->
+
+        <!-- Nos aseguramos de tener en la entidad y el DTO el atributo correspondiente a las imagenes -->
+        <form th:object="${empresadto}" th:action="@{/usuarios/alta}" th:method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="archivo">Selecciona un archivo:</label><br><br>
+            <input type="file" class="form-control" id="fotos" name="fotos" th:field="*{logoEmpresa}">
+          </div>
+
+        </form>
+
+        <div class="text-center">
+          <label for="archivo">Selecciona un archivo:</label><br><br>
+          <input type="file" name="file" id="archivo" />
+        </div><br>
+      </div>
+      <a href="registroEmpresa8" class="btn btn-dark" id="continuar1">Omitir</a><br>
+      <a href="registroEmpresa8" class="btn btn-dark" id="continuar2">Continuar</a>
+
+    </section>
+  </main>
+  </main>
+
+  <!--Fooooterrrrr-->
+
+  <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+  <!--Fooooterrrrr-->
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+</body>

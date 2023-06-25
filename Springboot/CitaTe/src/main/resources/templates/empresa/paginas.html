@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peluquerias</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+
+</br></br>
+
+<div class="container">
+    <h1>Peluquerias</h1>
+
+
+
+    <!-- Tabla para todos-->
+<!--    <div th:if="${provinciaFiltro =='Todos'}">-->
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre de la empresa</th>
+                    <th>Cif</th>
+                    <th>Descripcion</th>
+                    <th>Provincia</th>
+         <!-- Nueva columna para las acciones -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+
+                    <tr  th:each="empresadto : ${entities}">
+
+                                    <td th:text="${empresadto.NombreEmpresa}"></td>
+                                    <td th:text="${empresadto.Cif}"></td>
+                                    <td th:text="${empresadto.DescripcionEmpresa}"></td>
+                                    <td th:text="${empresadto.direccion.provincia}"></td>
+                                    <td>
+                                        <a th:href="@{/empresas/details/{id}(id=${empresadto.id})}" class="btn btn-primary">Ver</a>
+                                    </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--Botones para cambio de pagina-->
+            <div class="col">
+                <div class="col-11" >
+                        <div class="btn ">
+                            <a th:href="@{paginados(numeroPagina=${primeraPagina}, tamanoPagina=${tamanoPagina})}">
+                                Ir a la primera página
+                            </a>
+                        </div>
+                        <div class="btn ">
+                            <a th:if="${paginaAnterior >= 0}" th:href="@{paginados(numeroPagina=${paginaAnterior}, tamanoPagina=${tamanoPagina})}">
+                                Página anterior
+                            </a>
+                        </div>
+                        <div class="btn ">
+                            <a th:if="${siguientePagina}" th:href="@{paginados(numeroPagina=${siguientePagina}, tamanoPagina=${tamanoPagina})}">
+                                Siguiente página
+                            </a>
+                        </div>
+                </div>
+            </div>
+<!--    </div>-->
+    <!-- FIN TABLA TODOS-->
+
+</div>
+
+
+
+
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

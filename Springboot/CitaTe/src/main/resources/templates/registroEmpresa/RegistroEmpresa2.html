@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+
+
+<body class="container-fluid">
+
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+        <main class="d-flex flex-wrap justify-content-center " id="main">
+            <div class="row">
+
+                <form th:object="${empresaDTO}" th:action="@{/empresas/createEmpresa3}" th:method="POST">
+                    <div class="modal-body text-center" id="registroempresas" >
+                        <label for="nombreEmpresa">Nombre de Empresa:</label><br>
+                        <input type="text" name="Nombre de Empresa" id="nombreEmpresa" th:field="${empresaDTO.nombreEmpresa}" required/> <br><br>
+
+                        <label for="nombreEmpresa">CIF:</label><br>
+                        <input type="text" name="cif" id="cif" th:field="${empresaDTO.cif}" required/> <br><br>
+
+                        <label for="email">Correo electrónico:</label><br>
+                        <input type="text" name="email" id="email" th:field="${usuarioDTO.email}" required><br><br>
+
+
+                        <label for="password">Contraseña:</label><br>
+                        <input type="password" name="password" id="password"  required/> <br><br>
+
+                        <label for="repetirpassword">Repita la contraseña:</label><br>
+                        <input type="password" name="repetirpassword" id="repetirpassword" th:field="${usuarioDTO.pass}" required/><br><br>
+
+
+<!--                        <label for="email">Teléfono:</label><br>-->
+<!--                        <input type="text" name="telefono" id="contacto" th:field="${empresaDTO.contacto}" required><br><br>-->
+
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" id="activo" name="activo" th:field="${usuarioDTO.activo}">
+                        </div>
+
+                        <label for="NombreJefe">Nombre propietario: </label><br>
+                        <input type="text" name="nombreJefe" id="NombreJefe" th:field="${empleadoDTO.NombreEmpleado}" required/> <br><br>
+
+                        <label for="apellido1">Primer apellido: </label><br>
+                        <input type="text" name="apellido1" id="apellido1" th:field="${empleadoDTO.Apellido1Empleado}" required/> <br><br>
+
+                        <label for="apellido2">Segundo apellido: </label><br>
+                        <input type="text" name="apellido2" id="apellido2" th:field="${empleadoDTO.Apellido2Empleado}" required/> <br><br>
+
+
+
+
+                        <div style="display: inline-flex;">
+                            <input type="checkbox" name="Terminosdeuso" id ="terminosdeuso" value="terminosdeuso" required style="margin-top: -20px;"  />
+                            <label for="terminosdeuso"> &nbspHe leído y estoy de acuerdo con los <b>Terminos de uso</b></label><br/><br>
+                        </div><br>
+
+                            <input  class="btn btn-dark" type="submit" name="registrarse" value="Registrarse" /> <br><br>
+
+                        <button class="btn btn-dark" onclick="startSignIn()">Registrarse con Google</button><br><br>
+                    </div>
+
+
+                </form>
+
+
+
+
+
+            </div>
+        </main>
+
+  <!--foooooooooooooooooooooooooooooooooooooooter-->
+
+  <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+<!--Cuerpo-->
+<br>
+
+  <main>
+
+    <article class="row d-flex  justify-content-center">
+      <div class="col-12 cajitas">
+        <h3 class="col-12 titupag"> EL MEJOR SOFTWARE DE RESERVA DE CITAS</h3>
+        <div><a class=" col-10 cajitas   btn btn-dark " href="/empresas/createEmpresa">Probar</a></div>
+      </div>
+    </article>
+
+    <article class="row d-flex justify-content-center">
+
+      <!-- class btn de bootstrap hace que se comporte como un boton, cuando hace hover cambia de-->
+
+      <div class="col-11 col-md-3 col-lg-3 d-flex flex-column justify-content-center cajitas" id="rectangulo">
+        <a class="btn p-2">Calendario de citas</a>
+        <a class="btn p-2">Gestion de clientes</a>
+        <a class="btn p-2">Procesamiento de pagos</a>
+        <a class=" btn p-2">Seguimiento del rendimiento</a>
+      </div>
+
+
+      <div class="col-11 col-md-7 col-lg-7 cajitas ">
+        <p class="pcentrado">LA HERRAMIENTA QUE NECESITAS DONDE LA NECESITAS</p>
+        <div id="myCarousel" class="limpio cajitas carousel slide" data-bs-ride="carousel">
+          <!--Indicadores de la parte inferior del carrusel y cada no de los sliders del carrousel-->
+          <div class=" limpio carousel-indicators">
+
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"
+                    aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button>
+
+          </div>
+          <!--Incluye todos los slides del carrousel-->
+          <div class="limpio carousel-inner row">
+
+            <!--Primer slide-->
+            <div class="limpio carousel-item carousel-item-next carousel-item-start  ">
+
+              <svg class="bd-placeholder-img" width="100%" height="100%" style="background-image: url('img/2.jpg');"
+                   aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <!--            <rect width="100%" height="100%" fill="var(&#45;&#45;bs-secondary-color)"></rect>-->
+              </svg>
+              <div class="limpio container">
+                <div class="limpio carousel-caption text-start">
+                  <p class="pcentrado"><a class="btn btn-lg btn-dark" href="img/">Ver galeria</a></p>
+                </div>
+              </div>
+            </div>
+
+            <!--Segundo slide-->
+            <div class="limpio carousel-item ">
+              <svg class="bd-placeholder-img" width="100%" height="100%" style="background-image: url('img/3.jpg');"
+                   aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <!--              <rect width="100%" height="100%" fill="var(&#45;&#45;bs-secondary-color)"></rect>-->
+              </svg>
+              <div class="limpio container">
+                <div class="limpio carousel-caption">
+                  <p class="pcentrado"><a class="btn btn-lg btn-dark" href="../RegistroEmpresa3.html">Resgistrate</a></p>
+
+                </div>
+
+              </div>
+
+            </div>
+            <!--Tercer slide-->
+            <div class="limpio carousel-item active carousel-item-start">
+              <svg class="bd-placeholder-img" width="100%" height="100%" style="background-image: url('img/1.jpeg');"
+                   aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <!--              <rect width="100%" height="100%" fill="var(&#45;&#45;bs-secondary-color)"></rect>-->
+              </svg>
+              <div class="limpio container">
+                <div class="limpio carousel-caption text-end">
+
+                  <p class="pcentrado"><a class="btn btn-lg btn-dark" href="img/">Contacto</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Control de la dirección de los slides-->
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!--Fooooterrrrr-->
+
+  <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+  <!--Fooooterrrrr-->
+
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

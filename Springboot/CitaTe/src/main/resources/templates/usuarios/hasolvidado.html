@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <link href="/webjars/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../CitaTe.css">
+
+</head>
+<body>
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<div class="modal-body" id="registrocliente">
+
+
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <h1>Recuperación de la cuenta</h1><br>
+                                <p>Introduce una dirección de correo electrónico para que podamos ponernos en contacto contigo:</p>
+                                <form class="mx-1 mx-md-4" role="form" th:action="@{/usuarios/hasOlvidadoTuPassword}" th:method="GET">
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <input type="search" id="email" name="email" >
+                                        <input type="submit">
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--Fooooterrrrr-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+<!--Fooooterrrrr-->
+
+
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title th:text="${entity}"></title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="fondoallentities" >
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+
+</br></br></br>
+
+<div class="container">
+    <h3>Catalogo De Servicios</h3><br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre Del Servicio</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="catalogoDeServiciodto : ${entities}">
+<!--            <td th:text="${disponibilidad.fecha}"></td>-->
+            <td th:text="${catalogoDeServiciodto.nombre}"></td>
+            <td th:text="${catalogoDeServiciodto.precio}"></td>
+            <td th:text="${catalogoDeServiciodto.descripcion}"></td>
+            <td>
+                <a th:href="@{/catalogoDeServicios/{id}(id=${catalogoDeServiciodto.id})}" class="btn btn-dark">Editar</a>
+                <a th:href="@{/catalogoDeServicios/delete/{id}(id=${catalogoDeServiciodto.id})}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div class=" btn" style="background-color: #3f4c63">
+        <a th:class="nolink" href="/catalogoDeServicios/create" >Añadir nuevo Catalogo De Servicios</a>
+    </div>
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

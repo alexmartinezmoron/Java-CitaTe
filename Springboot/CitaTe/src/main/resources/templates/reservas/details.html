@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Empleados</title>
+
+  <link rel="stylesheet" th:href="@{/CitaTe.css}">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+</br></br></br>
+
+
+<div class="container">
+
+  <h1>Reservas</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Estado Reserva</th>
+        <th>Fecha de Reserva</th>
+        <th>Hora inicio</th>
+        <th>Hora fin</th>
+    </tr>
+    </thead>
+
+    <tbody>
+<!--    <tr th:each="reserva : ${reserva.disponibilidad}">-->
+      <td th:text="${reserva.}"></td>
+      <td th:text="${reserva.} + '€' "></td>
+      <td th:text="${catalogoDeServicio.descripcion}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

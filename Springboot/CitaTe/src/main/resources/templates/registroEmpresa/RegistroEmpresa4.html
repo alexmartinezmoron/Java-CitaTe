@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+
+</head>
+<body class="container">
+
+<!--           Como meter img-->
+<!--           th:src="@{/img/icon/icon-3.png}-->
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+      
+    <main>
+        <section class="navegacion">
+            <div class="progress" id="barradeprogreso">
+                <div class="progress-bar" role="progressbar" style=" width: 10%; background-color: #99D98C;"></div>
+            </div>
+            <h2 >QUE TIPO DE NEGOCIO LLEVAS</h2><br>
+
+
+            <form th:object="${empresaDTO}" th:action="@{/empresas/createEmpresa5}" th:method="POST">
+                <div class="modal-body text-center" id="registroempresas" >
+                    <label for="descripcion">Cuentanos un poco sobre tu empresa para que los cliente sapan como es tu negocio</label><br>
+                    <input type="hidden" name="cif" th:value="${empresaDTO.cif}" />
+
+                    <textarea  id="descripcion" name="textarea" rows="10" cols="50"th:field="${empresaDTO.descripcionEmpresa}" required/></textarea>
+
+
+                </div>
+
+
+
+
+
+                <H1> Que tipo de negocio llevas:</H1>
+                <div>
+                <input type="checkbox" name="barberia" id ="barberia" th:field="${empresaDTO.tipoNegocio}" value="barberia" style="margin-left: 20px"  />
+                <label for="barberia"> &nbspBarberia</label><br/><br>
+            </div>
+            <div >
+                <input type="checkbox" name="peluqueria" id ="peluqueria" th:field="${empresaDTO.tipoNegocio}" value="peluqueria" style="margin-left: 20px"   />
+                <label for="peluqueria"> &nbspPeluquería</label><br/><br>
+            </div>
+            <div >
+                <input type="checkbox" name="belleza" id ="belleza" th:field="${empresaDTO.tipoNegocio}" value="belleza" style="margin-left: 20px"   />
+                <label for="belleza"> &nbspSalón de belleza</label><br/><br>
+            </div>
+            <div>
+                <input type="checkbox" name="piel" id ="piel" th:field="${empresaDTO.tipoNegocio}" value="piel" style="margin-left: 20px"  />
+                <label for="piel"> &nbspCuidado de la piel</label><br/><br>
+            </div>
+            <div>
+                <input type="checkbox" name="otros" id ="otros" th:field="${empresaDTO.tipoNegocio}" value="otros"style="margin-left: 20px"  />
+                <label for="otros"> &nbspOtros</label><br/><br>
+            </div>
+
+                <!--        Campos arrastrados        -->
+                <input type="hidden" name="Nombre de Empresa" id="nombreEmpresa" th:field="${empresaDTO.nombreEmpresa}" >
+                <input type="hidden" name="cif" id="cif" th:field="${empresaDTO.cif}" />
+                <input type="hidden" name="email" id="email" th:field="${usuarioDTO.email}" >
+                <input type="hidden" name="password" id="password"  />
+                <input type="hidden" name="repetirpassword" id="repetirpassword" th:field="${usuarioDTO.pass}" />
+                <input type="hidden" name="nombreJefe" id="NombreJefe" th:field="${empleadoDTO.NombreEmpleado}" />
+                <input type="hidden" name="apellido1" id="apellido1" th:field="${empleadoDTO.Apellido1Empleado}" />
+                <input type="hidden" name="apellido2" id="apellido2" th:field="${empleadoDTO.Apellido2Empleado}" />
+                <!--        Campos arrastrados        -->
+
+                <input  class="btn btn-dark" type="submit" name="registrarse" value="Continuar" /> <br><br>
+
+            </form>
+
+        </section>
+    </main>
+
+           <!--Fooooterrrrr-->
+
+           <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+           <!--Fooooterrrrr-->
+
+           <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+
+</body>

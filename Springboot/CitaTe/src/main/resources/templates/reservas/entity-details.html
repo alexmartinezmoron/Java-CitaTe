@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reservas</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="fondoallentities"  >
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+</br></br></br>
+
+<div class="container">
+    <h1 class="text-center" >Editar Reserva</h1><br>
+    <form th:object="${entity}" th:action="@{/reservas/actualizar}" method="POST" th:method="POST">
+
+        <input type="hidden" name="id" id="id" th:field="*{id}">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+
+                <th>Estado Reserva</th>
+                <th>Fecha de Reserva</th>
+                <th>Hora inicio</th>
+                <th>Hora fin</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="checkbox" name="estadoReserva" id="estadoReserva" th:field="${entity.estadoReserva}"> Activo</td>
+                <td><input type="date" name="fechaReserva" id="fechaReserva" th:field="${entity.fechaReserva}"></td>
+                <td><input type="time" name="horaInicio" id="horaInicio" th:field="${entity.hora_inicio}"></td>
+                <td><input type="time" name="horaFin" id="horaFin" th:field="${entity.hora_fin}"></td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+
+
+        <button type="submit" class="btn btn-dark">Guardar</button>
+    </form>
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

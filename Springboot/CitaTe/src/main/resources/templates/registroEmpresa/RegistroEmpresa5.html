@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+
+</head>
+
+
+<body class="container">
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+<form th:object="${empresaDTO}" th:action="@{/empresas/altaEmpresa}" th:method="POST">
+
+
+
+    <div class="text-center">
+
+                        <label class="col-6" for="calle">Provincia: </label>
+                        <input class="col-6" type="text" name="provincia" id="provincia" value="" size="20" th:field="${direccionDTO.provincia}"/><br><br>
+                    </div>
+                        <div class="text-center">
+                            <label class="col-6" for="calle">Ciudad: </label>
+                            <input class="col-6" type="text" name="ciudad" id="ciudad" value="" size="20" th:field="${direccionDTO.ciudad}"/><br><br>
+                        </div>
+                        <div class="text-center">
+                            <label class="col-6" for="calle">CP: </label>
+                            <input class="col-6" type="number" name="cp" id="cp" value="" size="20" th:field="${direccionDTO.codigoPostal}" /><br><br>
+                        </div>
+                        <div class="text-center">
+                            <label class="col-6" for="calle">Calle: </label>
+                            <input class="col-6" type="text" name="calle" id="calle" value="" size="20" th:field="${direccionDTO.calle}"/><br><br>
+                        </div>
+                        <div class="text-center">
+                            <label class="col-6" for="calle">Número: </label>
+                            <input class="col-6" type="number" name="numero" id="numero" value="" size="20" th:field="${direccionDTO.numero}" /><br><br>
+                        </div>
+
+                        <div class="text-center">
+                        <input  class="btn btn-dark" type="submit" name="registrarse" value="Continuar" /> <br><br>
+                        </div>
+                    </div>
+
+
+
+
+
+
+    <!--        Campos arrastrados        -->
+    <input type="hidden" name="Nombre de Empresa" id="nombreEmpresa" th:field="${empresaDTO.nombreEmpresa}" >
+    <input type="hidden" name="cif" id="cif" th:field="${empresaDTO.cif}" />
+    <input type="hidden" name="email" id="email" th:field="${usuarioDTO.email}" >
+    <input type="hidden" name="password" id="password"  />
+    <input type="hidden" name="repetirpassword" id="repetirpassword" th:field="${usuarioDTO.pass}" />
+    <input type="hidden" name="nombreJefe" id="NombreJefe" th:field="${empleadoDTO.NombreEmpleado}" />
+    <input type="hidden" name="apellido1" id="apellido1" th:field="${empleadoDTO.Apellido1Empleado}" />
+    <input type="hidden" name="apellido2" id="apellido2" th:field="${empleadoDTO.Apellido2Empleado}" />
+
+    <input type="hidden" name="descripcion" id="descripcion" th:field="${empresaDTO.descripcionEmpresa}" />
+    <input type="hidden" name="peluqieria" id="peluqieria" th:field="${empresaDTO.tipoNegocio}"  />
+    <!--        Campos arrastrados        -->
+
+
+</form>
+
+
+    <!--Fooooterrrrr-->
+
+    <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+    <!--Fooooterrrrr-->
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+

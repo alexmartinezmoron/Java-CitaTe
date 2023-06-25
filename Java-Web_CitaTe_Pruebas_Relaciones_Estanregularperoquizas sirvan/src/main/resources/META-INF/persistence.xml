@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>es.eoi.persistence.Cliente</class>
+        <class>es.eoi.persistence.Direccion</class>
+        <class>es.eoi.persistence.Direccion</class>
+        <class>es.eoi.persistence.Empleado</class>
+        <class>es.eoi.persistence.Empresa</class>
+        <class>es.eoi.persistence.EstadoReserva</class>
+        <class>es.eoi.persistence.MetodoPago</class>
+        <class>es.eoi.persistence.Reserva</class>
+        <class>es.eoi.persistence.Servicio</class>
+        <class>es.eoi.persistence.Usuario</class>
+        <class>es.eoi.persistence.Valoracion</class>
+
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/citate"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="password"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

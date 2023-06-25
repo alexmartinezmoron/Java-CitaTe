@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Disponibilidades</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="fondoallentities" >
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: headerregistroempresa}"></div>
+
+<!--Header-->
+
+</br></br></br>
+
+<div class="container">
+    <h2 class="text-center">Editar Disponibilidad</h2><br>
+    <form th:object="${entity}" th:action="@{/disponibilidades/actualizar}" method="POST" th:method="POST">
+
+        <input type="hidden" name="id" id="id" th:field="*{id}">
+
+
+            <h4>Horarios</h4> <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Dia De La Semana</th>
+                    <th>Hora Inicio Mañana</th>
+                    <th>Hora Fin Mañana</th>
+                    <th>Hora Incio Tarde</th>
+                    <th>Hora Fin Tarde</th>
+                </tr>
+            </thead>
+
+             <tbody>
+             <tr>
+
+<!--                <input type="checkbox" name="lunes" id="lunes" th:field="*{fecha}">-->
+                <td>  <label>Dia:  </label> <input type="date" name="fecha" id="fecha" th:field="${entity.diaDeLaSemana}"></td>
+                 <td> <input type="time" name="comienzo" id="comienzo1" th:field="${entity.horaInicioManiana}"></td>
+                 <td><input type="time" name="final" id="final1" th:field="${entity.horaFinManiana}"></td>
+                 <td><input type="time" name="comienzo" id="comienzo34" th:field="${entity.horaInicioTarde}"></td>
+                 <td> <input type="time" name="final" id="final34" th:field="${entity.horaFinTarde}"></td>
+
+             </tr>
+             </tbody>
+        </table><br>
+
+        <button type="submit" class="btn btn-dark">Guardar</button>
+    </form>
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

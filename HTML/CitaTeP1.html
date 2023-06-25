@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CitaTe.css">
+  
+</head>
+
+
+<body class="container">
+
+    <div class="container">
+
+        <!--HEEEEAAAADEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER-->
+
+        <header class="d-flex flex-wrap align-items-center justify-content-center py-3 mb-4 border-bottom">
+          
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <div class="col-sm-12 col-md-4 text-center" >
+                <img src="img/logoazul.png" alt="citatelogo" id="logocitate" width="140px">
+            </div>
+        </a>
+    
+        <!-- Menu Con "Login", "Registrate", "Idioma" y "Ayuda" -->
+        <ul class="nav nav-pills col-12 col-md-4 text-center"  >
+            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#loginModal" id="botonlogin">Login</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="botonregister">Registrate</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="clienteempresa">
+                    <li><a class="dropdown-item" href="#" class="btn" data-bs-toggle="modal" data-bs-target="#clienteModal" id="botoncliente">Cliente</a></li>
+                    <li><a class="dropdown-item" href="#" class="btn" data-bs-toggle="modal" data-bs-target="#empresaModal" id="botonempresa">Empresa</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link" class="btn" id="botonayuda">Ayuda</a></li>
+        </ul>
+    </header>
+
+    <!--HEEEEAAAADEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER-->
+
+
+    <!--Desplegablessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
+
+      <!--Desplegable modal login-->
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="accesologin" class="d-flex container flex-column justify-content-center "> <!-- LOGIN -->
+                  <img src="img/minilogoazul.png" class="col-2 ">
+                  <div>
+                    <input type="radio" name="cliente" id="botonempresa" value="botonempresa"style="margin-top: -20px;" required />
+                    <label for="botonempresa">Empresa</label>
+                    <input type="radio" name="cliente" id="botoncliente" value="botoncliente" style="margin-top: -20px;" required />
+                    <label for="boton cliente">Cliente</label> <br><br>
+                  </div>
+                  <input type="text" name="usuariologin" id="usuario" placeholder="Usuario" required/><br><br>
+                  <input type="password" name=" password" id="contraseñalogin" placeholder="Contraseña" required/><br><br>
+                  <a href="">¿Has olvidado tu contraseña?</a><br><br>
+                  <button onclick="startSignIn()">Logearse con Google</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--Desplegable modal Cliente-->
+          <div class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="clienteModalLabel"></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body" id="registrocliente" ><!-- Registro cliente -->
+                          <h1>Register</h1>
+                          <input type="text" name="Nombre" id="nombre" placeholder="Nombre" size="20" required/> <br><br>
+                          <input type="text" name="email" id="email" placeholder="Correo electrónico" required><br><br>
+                          <input type="password" name="password" id="password" placeholder="Contraseña" required/> <br><br>
+                          <input type="password" name="repetirpassword" id="repetirpassword" placeholder="Repita la contraseña" required/><br><br>
+                          <div style="display: inline-flex;">
+                              <input type="checkbox" name="Terminosdeuso" id ="terminosdeuso" value="terminosdeuso"required style="margin-top: -20px;"  />
+                              <label for="terminosdeuso"> &nbspHe leído y estoy de acuerdo con los <b>Terminos de uso</b></label><br/><br>
+                          </div>
+                          <input type="submit" name="registrarse" value="Registrarse"/> <br><br>
+                          <button onclick="startSignIn()">Registrarse con Google</button>
+                      
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+        <main>
+          
+          <div>
+            <h1>Peluquería 1</h1>
+          </div>
+
+          <section id="sección1">
+
+            <div>
+              <h2>Servicios</h2>           
+            </div>
+
+
+           <!--SERVICIOS OFRECIDOS--> 
+
+            <div class="row">
+
+              <div class="col-sm-12 col-md-6 col-lg-6 justify-content-center">
+
+                <div class="row">
+                  
+                  <div class="col-md-6">
+                    <div class="border border-white border-2 text-center py-2 mt-3 mb-2">
+                      <p class="centered">Corte de pelo</p>
+                      <p class="centered">11 euros</p>
+                      <button type="button" class="reservar" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#reservarModal" >
+                        <a href="#" class="botonreservar "class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#reservarModal" id="botonreservar">Reservar</a>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="border border-white border-2 text-center py-2 mt-3 mb-2">
+                      <p class="centered">Tinte</p>
+                      <p class="centered">50 euros</p>
+                      <button type="button" class="reservar" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#reservarModal">
+                        <a href="#" class="botonreservar" class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#reservarModal" id="botonreservar">Reservar</a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="border border-white border-2 text-center py-2 mt-3 mb-2">
+                      <p class="centered">Recogido</p>
+                      <p class="centered">30 euros</p>
+                      <button type="button" class="reservar" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#reservarModal">
+                        <a href="#" class="botonreservar"class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#reservarModal" id="botonreservar">Reservar</a>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="border border-white border-2 text-center py-2 mt-3 mb-2">
+                      <p class="centered">Reflejos</p>
+                      <p class="centered">25 euros</p>
+                      <button type="button" class="reservar" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#reservarModal">
+                        <Reservar href="#"class="botonreservar"class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#reservarModal" id="botonreservar">Reservar</a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="border border-white border-2 text-center py-2 mt-3 mb-2">
+                      <p class="centered">Corte de pelo y barba</p>
+                      <p class="centered">20 euros</p>
+                      <button type="button" class="reservar" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#reservarModal">
+                        <a href="#" class="botonreservar"class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#reservarModal" id="botonreservar">Reservar</a>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="border border-white border-2 text-center py-2 mt-3 mb-2">
+                      <p class="centered">Corte y deco</p>
+                      <p class="centered">60 euros</p>
+                      <button type="button" class="reservar" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#reservarModal">
+                        <a href="#" class="botonreservar"class="nav-link active" aria-current="page" class="btn" data-bs-toggle="modal" data-bs-target="#reservarModal" id="botonreservar">Reservar</a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div><br><br>
+
+              <!--DESPLEGABLE DE RESERVAR-->
+
+
+              <div class="modal fade" id="reservarModal" tabindex="-1" aria-labelledby="reservarModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+
+                    <!-- Contenido del modal -->
+
+
+                    <div class="modal-header" id="headermodal">
+                      <h5 class="modal-title" id="reservarModalLabel">Reservas</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+
+                    <div class="modal-body">
+ 
+                      <h3>¡Ya falta poco!</h3>
+                      <p><strong>Horas disponibles:</strong></p>
+
+                      <div class="row align-items-center" id="horas">
+
+                        <div class= "col-12">
+
+                          <button type="button" class="hora">
+                            <a href="#" class="botonhora"class="nav-link active  btn" aria-current="page">10:30</a>      
+                          </button>
+  
+                          <button type="button" class="hora">
+                            <a href="#" class="botonhora"class="nav-link active btn" aria-current="page">11:00</a>      
+                          </button>
+  
+                          <button type="button" class="hora">
+                            <a href="#" class="botonhora"class="nav-link active btn" aria-current="page">11:30</a>      
+                          </button>
+  
+                          <button type="button" class="hora">
+                            <a href="#" class="botonhora"class="nav-link active btn" aria-current="page">12:00</a>      
+                          </button>
+
+                          <button type="button" class="hora">
+                            <a href="#" class="botonhora"class="nav-link active btn" aria-current="page">12:30</a>      
+                          </button>
+
+                          <button type="button" class="hora">
+                            <a href="#" class="botonhora"class="nav-link active btn" aria-current="page">13:00</a>      
+                          </button>
+
+                        </div>
+
+                      </div><br>
+
+                      <p>Servicio: Corte y peinado</p>
+                      <p>Precio: 60 euros</p>
+                    </div>
+
+                      <!--FOOTER MODAAAAL-->
+                    <div class="modal-footer justify-content-between">
+                      <a href="/">
+                        <img src="img/logoazul.png" width="50"  alt="Logo de la empresa">
+                      </a>
+                      <button type="button" id="botoncontinuar" class="btn btn-secondary align-items-center" data-bs-dismiss="modal">Continuar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            <!--QUIENES SOMOS Y EMPLEADOS--> 
+
+
+              <div class="col-sm-12 col-md-6 col-lg-6 justify-content-center text-center">
+
+                <p id="presentacion"><strong>QUIENES SOMOS</strong></p>
+                <p id="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem maxime quisquam, eius modi autem vero sit sequi expedita facilis quidem nam veritatis dolorem odit voluptatum voluptas quam perspiciatis optio doloribus.</p>
+                
+                <div class="row border justify-content-center text-center">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+
+                    Empleados:<br/>
+                    <label for="p" class="">Pepito:</label><input type="radio" name="empleado" id="e1" value="Pepito" required /><br/>
+                    <label for="a" class="">Anita:</label><input type="radio" name="empleado" id="e2" value="Anita" />
+                    <br/><br/>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </section><br>
+
+         <section id="seccion2">
+
+          <h3>
+            CARACTERÍSTICAS
+          </h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum perspiciatis, nobis ab architecto modi, non quae nihil expedita aliquid explicabo sint et. Nulla sit impedit quas sed expedita veniam exercitationem?</p>
+          
+         </section><BR>
+
+        <!--VER NUESTRO TRABAJO--> 
+
+
+         <section id="seccion3">
+
+          <h3>
+            VER NUESTRO TRABAJO
+          </h3>
+
+              <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <!--Indicadores de la parte inferior del carrusel y cada no de los sliders del carrousel-->
+            <div class="carousel-indicators">
+
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+          
+            </div>
+                <!--Incluye todos los slides del carrousel-->
+            <div class="carousel-inner">
+                <!--Primer slide-->
+              <div class="carousel-item carousel-item-next carousel-item-start">
+                <svg class="bd-placeholder-img" width="100%" height="100%" style="background-image: url('/img/3.jpg');" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+              </div>
+                <!--Segundo slide-->
+              <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" style="background-image: url('/img/3.jpg');" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+              </div>
+              <!--Tercer slide-->
+              <div class="carousel-item active carousel-item-start">
+                <svg class="bd-placeholder-img" width="100%" height="100%" style="background-image: url('/img/1.jpeg');" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+              </div>
+            </div>
+            <!--Control de la dirección de los slides-->
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          
+         </section> <BR><BR>
+
+
+                    <!--RESEÑAS--> 
+
+
+
+         <section id="seccion4">
+
+          <h3>
+            RESEÑAS
+          </h3>
+
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <label for="comm">¿Desea añadir alguna reseña?:</label><br/>
+              <textarea name="comentarios" id="comm" rows="5" cols="40" ></textarea>
+
+              <div class="">
+                <input type="submit" name="Enviar" value="Enviar" id="enviar">
+              </div>
+            </div><br><br>
+
+            <div class="col-md-6">
+              <p>Aquí irían las reseñas que se irán añadiendo</p>
+            </div>
+
+          </div>
+
+          
+
+         </section><BR>
+
+
+        </main>
+
+          
+
+    
+          
+          
+
+
+        <!--Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->
+        
+        <footer class="bg-white">
+          <div class="container py-5">
+            <div class="row py-3">
+      
+              <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">About</h6>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><a href="#" class="text-muted">Contact Us</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">About Us</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Stories</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Press</a></li>
+                </ul>
+              </div>
+      
+              <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Help</h6>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><a href="#" class="text-muted">Payments</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Shipping</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Cancellation</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Returns</a></li>
+                </ul>
+              </div>
+              
+              <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Policy</h6>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><a href="#" class="text-muted">Return Policy</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Terms Of Use</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Security</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Privacy</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
+                <ul class="list-unstyled mb-0">
+                  <li class="mb-2"><a href="#" class="text-muted">Login</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Register</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Sitemap</a></li>
+                  <li class="mb-2"><a href="#" class="text-muted">Our Products</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Registered Office Address</h6>
+                <p class="text-muted mb-4">Here , write the complete address of the Registered office address along with telephone number.</p>
+                <ul class="list-inline mt-4">
+                  <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fab  fa-2x fa-twitter"></i></a></li>
+                  <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fab fa-2x fa-facebook-f"></i></a></li>
+                  <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fab fa-2x fa-instagram"></i></a></li>
+                  <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fab fa-2x fa-youtube"></i></a></li>
+                  <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fab fa-2x fa-google"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr class="p-0 m-0 b-0">
+      
+         
+          <div class="bg-light py-2">
+            <div class="container text-center">
+              <p class="text-muted mb-0 py-2">&copy; 2019 BBBootstrap All risghts reserved.</p>
+              
+              </div>
+            </div>
+          
+        </footer>
+        
+
+      <!--Foooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->   
+
+    </div>
+    
+</body>
+</html>

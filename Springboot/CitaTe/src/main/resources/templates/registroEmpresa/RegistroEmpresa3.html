@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+</head>
+
+<body id="contenedor" class="container-fluid d-flex flex-column text-center">
+<div class="row justify-content-end">
+
+    <!--Header-->
+
+    <div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+    <!--Header-->
+    <main>
+
+        <!--ESLOGAN-->
+        <div class="row py-lg-5 border-bottom justify-content-center align-items-center text-center"
+             style="background-image: url('img/tijeras.jpg');" id="fotoytextop">
+            <div class="col-lg-6 col-md-8 mx-auto" id="debajodelheader">
+                <h1 class="text-center">CitaTe</h1>
+                <p class="lead text-body-secondary text-center">Bienvenido/a a CitaTe</p>
+                <p th:text="${empresaDTO.nombreEmpresa}"></p>
+
+
+
+            </div>
+        </div><br><br>
+
+        <!--BOTON SIGUIENTE PANTALLA-->
+        <section>
+            <div class="d-flex gap-2 justify-content-center py-5">
+                <button class="btn btn-dark d-inline-flex align-items-center text" type="button" id="configuracion"
+                        data-bs-toggle="modal" data-bs-target="#configuracionModal">
+                    <b>Configura tu negocio</b>
+                    <svg class="bi ms-1" width="0" height="20">
+                        <use xlink:href="#arrow-right-short"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal fade" id="configuracionModal" tabindex="-1" aria-labelledby="configuracionModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="configuracionModalLabel"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body"><!-- Contenido de la ventana emergente -->
+                                <h1>Protección de datos</h1>
+                                <form th:action="@{/empresas/createEmpresa4}" th:method="POST">
+                                    <div style="display: inline-flex;">
+                                        <input type="checkbox" name="Terminosdeuso1" id="terminosdeuso1" value="terminosdeuso1" required
+                                               style="margin-top: -20px;" />
+                                        <label for="terminosdeuso1"> &nbspAcepto las condiciones de uso y servicio</label><br /><br>
+                                    </div>
+                                    <div style="display: inline-flex;">
+                                        <input type="checkbox" name="Terminosdeuso2" id="terminosdeuso2" value="terminosdeuso2" required
+                                               style="margin-top: -20px;" />
+                                        <label for="terminosdeuso2"> &nbspConsentimiento para recibir nuevas ofertas
+                                            <b>(Opcional)</b></label><br /><br>
+                                    </div>
+
+
+                                    <!--        Campos arrastrados        -->
+                                    <input type="hidden" name="cif" th:value="${empresaDTO.cif}" />
+                                    <input type="hidden" name="Nombre de Empresa" id="nombreEmpresa" th:field="${empresaDTO.nombreEmpresa}" >
+                                    <input type="hidden" name="cif" id="cif" th:field="${empresaDTO.cif}" />
+                                    <input type="hidden" name="email" id="email" th:field="${usuarioDTO.email}" >
+                                    <input type="hidden" name="password" id="password"  />
+                                    <input type="hidden" name="repetirpassword" id="repetirpassword" th:field="${usuarioDTO.pass}" />
+                                    <input type="hidden" name="nombreJefe" id="NombreJefe" th:field="${empleadoDTO.NombreEmpleado}" />
+                                    <input type="hidden" name="apellido1" id="apellido1" th:field="${empleadoDTO.Apellido1Empleado}" />
+                                    <input type="hidden" name="apellido2" id="apellido2" th:field="${empleadoDTO.Apellido2Empleado}" />
+                                    <!--        Campos arrastrados        -->
+
+
+                                    <input  class="btn btn-dark" type="submit" name="continuar" value="Continuar" />
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <!--Fooooterrrrr-->
+
+    <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+    <!--Fooooterrrrr-->
+
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sd="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+<script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+
+  <body>
+
+      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Listado de empresas con paginación</p>
+    </div>
+
+
+      <div class="box-body">
+        <span sd:page-size-selector="javascript"></span>
+
+        <form  method="get">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th th:replace="~{fragmentos/sortingempresas :: sorting('nombre','Nombre')}"></th>
+                <th th:replace="~{fragmentos/sortingempresas :: sorting('provincia','Provincia')}"></th>
+<!--                <th th:replace="~{fragments/sortingempresas :: sorting('region','Region')}"></th>-->
+<!--                <th>codigo_postal</th>-->
+<!--                <th th:replace="~{fragments/sortingempresas :: sorting('telefono','Telefono')}"></th>-->
+<!--                <th th:replace="~{fragments/sortingempresas :: sorting('direccion1','Direccion1')}"></th>-->
+<!--                <th th:replace="~{fragments/sortingempresas :: sorting('direccion1','Direccion2')}"></th>-->
+                <th></th>
+                <th></th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>
+                  <input id="keywordnombre" type="search" name="keywordnombre" th:value="${keywordnombre}"  class="form-control"
+                         placeholder="Buscar por nombre">
+                </th>
+                <th></th>
+                <th></th>
+                <th><input id="keywordprovincia" type="search" name="keywordprovincia" th:value="${keywordprovincia}"  class="form-control"
+                           placeholder="Busca por provincia">
+                </th>
+
+
+                <th><button type="submit"  class="btn btn-info">Buscar</button></th>
+                <th>
+                  <a class="btn btn-info" th:href="@{paginadosBusqueda(numeroPagina=${primeraPagina}, tamanoPagina=${tamanoPagina})}">
+                  Limpiar
+                  </a>
+                </th>
+
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="empresa : ${lista}">
+                <td class="fs-6" th:text="${empresa.id}"></td>
+                <td class="fs-6" th:text="${empresa.nombreEmpresa}"></td>
+                <td class="fs-6" th:text="${empresa.Cif}"></td>
+                <td class="fs-6" th:text="${empresa.DescripcionEmpresa}"></td>
+                <td class="fs-6" th:text="${empresa.direccion.provincia}"></td>
+
+
+                <td>
+                  <a
+                    th:href="@{/empresas/details/{id}(id=${empresa.id})}"
+                    class="btn btn-success btn-sm"
+                    >Visualizar</a
+                  >
+                  <a
+                    th:href="@{/employees/borrar/{id}(id=${empresa.id})}"
+                    class="btn btn-primary btn-sm"
+                    >Eliminar</a
+                  >
+                </td>
+                <tr th:if="${lista ==null or  lista.empty}">
+                  <td colspan="13" class="text-center">No hay empresas</td>
+                </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+
+      <!--Botones para cambio de pagina-->
+<!--      <div class="col">-->
+<!--        <div class="col-11" >-->
+<!--          <div class="btn ">-->
+<!--            <a th:href="@{paginadosBusqueda(numeroPagina=${primeraPagina}, tamanoPagina=${tamanoPagina})}">-->
+<!--              Ir a la primera página-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="btn ">-->
+<!--            <a th:if="${paginaAnterior >= 0}" th:href="@{paginadosBusqueda(numeroPagina=${paginaAnterior}, tamanoPagina=${tamanoPagina})}">-->
+<!--              Página anterior-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="btn ">-->
+<!--            <a  th:if="${siguientePagina}" th:href="@{paginadosBusqueda(numeroPagina=${siguientePagina}, tamanoPagina=${tamanoPagina})}">-->
+<!--              Siguiente página-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+      <!-- preparamos el div para poner los numeros de pagina-->
+      <div  th:if="${lista!=null and !lista.empty}"  class="container">
+        <div class="d-flex align-items-center justify-content-center">
+          <nav>
+            <ul class="pagination" sd:pagination="full">
+              <!--  si hay menos del numero minimo de registos no muestro la barra-->
+              <div  th:if="${lista.totalPages > 0}" class="pagination"
+                    th:each="pageNumber : ${pageNumbers}">
+                <div >
+
+                  <li th:class="${pageNumber==lista.number + 1} ? active">
+                    <a class="page-link"  th:href="@{'paginadosBusqueda?' +
+                            ${keywordnombre!=null && keywordnombre!=''? 'keywordnombre=' + keywordnombre + '&' : ''}
+                            + ${keywordprovincia!=null && keywordprovincia!=''? 'keywordprovincia=' + keywordprovincia + '&' : ''}
+                            + 'page=' + ${pageNumber} + '&size=' + ${pageSize}
+                            + ${sortField!=null ? '&sort=' + sortField + ',' + sortDirection : ''}}"
+                       th:text=${pageNumber} ></a>
+                  </li>
+
+                </div>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- pruevas-->
+
+      <div class="btn ">
+                    <a  th:if="${siguientePagina}" th:href="@{paginadosBusqueda(numeroPagina=${siguientePagina}, tamanoPagina=${tamanoPagina})}">
+                      Siguiente página
+                    </a>
+      </div>
+
+
+    </div>
+  </body>
+</html>

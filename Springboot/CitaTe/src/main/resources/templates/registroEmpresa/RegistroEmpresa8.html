@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body class="container">
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+  <main>
+    <section>
+      <div class="progress"   id=barradeprogreso>
+        <div class="progress-bar" role="progressbar" style=" width: 71%; background-color: #168AAD;"></div>
+
+      </div>
+      <h2>EMPIEZA A AÑADIR TUS SERVICIOS</h2><br>
+
+
+      <div class="col">
+        <form class="col-11" action="URL A LA QUE ENVIO EL FORMULARIO" method="post"  enctype="multipart/form-data">
+
+
+          <div class="m-4">
+            <input class="col-1" type="radio"  name="servicio">
+            <label class="col-3" >Afeitado</label>
+            <input class="ms-5 col-2" type="button" name="Tiempo" value="Tiempo">
+            <input class="ms-5 col-2" type="button" name="precio" value="Precio">
+          </div>
+
+
+          <div class="m-4" >
+            <input class="col-1" type="radio"  name="servicio">
+            <label class="col-3" >Corte basico</label>
+            <input class="ms-5 col-2" type="button" name="Tiempo" value="Tiempo">
+            <input class="ms-5 col-2" type="button" name="precio" value="Precio">
+
+          </div>
+
+          <div class="m-4">
+            <input class="col-1" type="radio"  name="servicio">
+            <label class="col-3" >Corte barba</label>
+            <input class="ms-5 col-2" type="button" name="Tiempo" value="Tiempo">
+            <input class="ms-5 col-2" type="button" name="precio" value="Precio">
+          </div>
+
+          <div class="m-4">
+            <input class="col-1" type="radio" name="servicio" >
+            <label class="col-3" >Tinte</label>
+            <input class="ms-5 col-2" type="button" name="Tiempo" value="Tiempo">
+            <input class="ms-5 col-2" type="button" name="precio" value="Precio">
+          </div>
+        </form>
+      </div>
+
+
+      </form>
+      </div>
+
+      <div class="btn" data-bs-toggle="modal" data-bs-target="#servicioModal" id="botonservicio">
+        <a class="col-8 mb-5 mt-3 btn btn-lg btn-dark" >Añadir Servicio</a>
+      </div>
+      <div class="modal fade" id="servicioModal" tabindex="-1" aria-labelledby="servicioModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="servicioLabel">Añadir Servicio</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex container flex-column justify-content-center" id="servicio">
+              <img src="img/minilogoazul.png" class="col-2 "> <br><br>
+              <input type="text" name="nombreservicio" id="nombreservicio" placeholder="Nombre del servicio"><br><br>
+              <p>Servicios sugeridos:</p>
+              <div style="display: inline-flex;">
+                <input type="checkbox" name="sugeridos" id ="sugeridos1" value="sugeridos"required style="margin-top: -20px;"  />
+                <label for="sugeridos1"> &nbspAfeitado a navaja</label><br/><br>
+              </div><br>
+              <div style="display: inline-flex;">
+                <input type="checkbox" name="sugeridos" id ="sugeridos2" value="sugeridos"required style="margin-top: -20px;"  />
+                <label for="sugeridos2"> &nbspBarba </label><br/><br>
+              </div><br>
+              <div style="display: inline-flex;">
+                <input type="checkbox" name="sugeridos" id ="sugeridos3" value="sugeridos"required style="margin-top: -20px;"  />
+                <label for="sugeridos3"> &nbspCita doble</label><br/><br>
+              </div><br>
+              <div style="display: inline-flex;">
+                <input type="checkbox" name="sugeridos" id ="sugeridos4" value="sugeridos"required style="margin-top: -20px;"  />
+                <label for="sugeridos4"> &nbspPeinado</label><br/><br>
+              </div>
+              <h4>Duración del servicio</h4>
+              <div>
+                <input type="time" name="duracionservicio" id="duracionservicio">
+                <input type="number" name="precio" id="precio" placeholder="Precio" min="1">
+              </div>
+
+            </div>
+            <a href="registroEmpresa8" class="btn btn-primary" id="continuar1">Continuar</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="registroEmpresa9" class="btn btn-primary" id="continuar">Continuar</a>
+
+    </section>
+  </main><br><br>
+
+  <!--Fooooterrrrr-->
+
+  <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+  <!--Fooooterrrrr-->
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+</body>

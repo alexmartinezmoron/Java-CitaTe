@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+
+</head>
+
+
+<body >
+
+<!--Header-->
+<div th:replace="~{fragmentos/modalLogin :: modal}"></div>
+<div th:replace="~{fragmentos/headerRegistro :: header}"></div>
+
+
+
+
+<!--Borrar esta linea-->
+<h5>Hola: <span sec:authentication="name"></span></h5>
+<h1></h1>
+<!--Borrar esta linea-->
+
+<!--Header-->
+
+<!--Desplegablessssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
+
+<!--Desplegable modal login-->
+
+
+
+
+<!--Desplegable modal Cliente registro -->
+<!--<div  class="modal fade" id="clienteModal" tabindex="-1" aria-labelledby="clienteModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="clienteModalLabel"></h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--                <div class="modal-body" id="registrocliente">-->
+<!--                <form>-->
+<!--                    <h1>Register</h1><br><br>-->
+<!--                    <input type="text" name="nombreUsuario" id="nombre" placeholder="Nombre" size="20" required/><br><br>-->
+<!--                    <input type="text" name="apellido1" id="apellido1" placeholder="Primer Apellido" required><br><br>-->
+<!--                    <input type="text" name="apellido2" id="apellido2" placeholder="Segundo Apellido" required><br><br>-->
+<!--                    <input type="text" name="telefono" id="tc" placeholder="Teléfono de contacto" ><br><br>-->
+<!--                    <input type="text" name="emailUsuario" id="email" placeholder="Correo electrónico" required><br><br>-->
+<!--                    <input type="password" name="passwordUsuario" id="password" placeholder="Contraseña" required/> <br><br>-->
+<!--                    <input type="password" name="repetirpasswordUsuario" id="repetirpassword" placeholder="Repita la contraseña" required/><br><br>-->
+<!--                    <div style="display: inline-flex;">-->
+<!--                        <input type="checkbox" name="Terminosdeuso" id ="terminosdeuso" value="terminosdeuso" required style="margin-top: -20px;"  />-->
+<!--                        <label for="terminosdeuso"> &nbspHe leído y estoy de acuerdo con los <b>Terminos de uso</b></label><br/><br>-->
+<!--                    </div>-->
+<!--                    <input type="submit" name="registrarse" value="Registrarse"/> <br><br>-->
+<!--                </form>-->
+<!--                <button onclick="startSignIn()">Registrarse con Google</button>-->
+
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--Eslogannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn-->
+<main>
+    <div class="row py-lg-5 border-bottom justify-content-center align-items-center my-custom-container container-fluid" style="background-image: url('img/banner_solo_foto.jpg');" id="fotoytextop">
+        <div class="col-lg-6 col-md-8 mx-auto" id="debajodelheader">
+
+        </div>
+    </div>
+
+
+
+    <!--Botooonnnnnnnnnnnnn Reserva servicioooooooooooooooooooosssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
+    <div class="d-flex gap-2 justify-content-center py-5">
+        <button class="btn btn-dark d-inline-flex align-items-center text boton" type="button" id="reservaservicios">
+            <a th:text="#{text.home.reservaservicios}" th:href="@{/empresas/paginadosBusqueda}" class="nolink"></a>
+            <svg class="bi ms-1" width="0" height="20">
+                <use xlink:href="#arrow-right-short"></use>
+            </svg>
+        </button>
+    </div>
+
+
+    <!--Caroooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooousel-->
+
+    <div id="myCarousel" class="carousel slide mb-5 container-fluid " data-bs-ride="carousel">
+        <!--Indicadores de la parte inferior del carrusel y cada no de los sliders del carrousel-->
+        <div class="carousel-indicators">
+
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                    aria-label="Slide 1" aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class=""></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button>
+
+        </div>
+        <!--Incluye todos los slides del carrousel-->
+        <div class="carousel-inner row">
+            <!--Primer slide-->
+            <div class="carousel-item carousel-item-next carousel-item-start">
+                <svg class="bd-placeholder-img" width="100%" height="100%"
+                     style="background-image: url('img/barber-shopcarrusel.jpg');" aria-hidden="true"
+                     preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect> -->
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <h1>Reserva tu estilo, reserva tu cita...</h1>
+                        <p>Citate: Tu agenda de belleza al alcance de tu mano.</p>
+                        <p><a class="btn btn-lg btn-dark" href="">Pruebalo</a></p>
+                    </div>
+                </div>
+            </div>
+            <!--Segundo slide-->
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%"
+                     style="background-image: url('img/carrusel4.jpg');" aria-hidden="true"
+                     preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect> -->
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Haz crecer tu negocio con nuestra app de gestión de citas.</h1>
+                        <p>Ahorra tiempo, maximiza tu productividad. Únete a nuestra app y toma el control de tus citas.</p>
+                    </div>
+                </div>
+            </div>
+            <!--Tercer slide-->
+            <div class="carousel-item active carousel-item-start">
+                <svg class="bd-placeholder-img" width="100%" height="100%"
+                     style="background-image: url('img/carrusel5.jpg');" aria-hidden="true"
+                     preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect> -->
+                </svg>
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1>Haz que tu empresa destaque.</h1>
+                        <p>Regístrate y experimenta la comodidad de nuestra app.</p>
+                        <p><a class="btn btn-lg btn-dark" href="#">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!--Control de la dirección de los slides-->
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</main>
+
+
+
+
+
+<!--Fooooterrrrr-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+<!--Fooooterrrrr-->
+
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

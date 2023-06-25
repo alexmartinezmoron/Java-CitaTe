@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="container">
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+    <main>
+        <section class="navegacion">
+            <div class="progress"   id="barradeprogreso">
+                <div class="progress-bar" role="progressbar" style=" width: 90%; background-color: #76C893;"></div>
+                
+            </div>
+            <h2>¿QUIERES AÑADIR EMPLEADOS?</h2><br>
+
+            <div class="row  d-flex  justify-content-center">
+
+                <a class="col-8 m-4 btn btn-lg btn-dark btn"  data-bs-toggle="modal" data-bs-target="#propietarioModal" id="botonpropietario" href="img/">Propietario</a>
+                <a class="col-8 mb-5 btn btn-lg btn-dark btn"  data-bs-toggle="modal" data-bs-target="#empleadoModal" id="botonempleado" href="img/">Añadir empleado</a>
+            </div>
+
+            <!---Modal Propietario-->
+            <div class="modal fade" id="propietarioModal" tabindex="-1" aria-labelledby="propietarioModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="propietarioLabel">LOGIN</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div  id="propietario" class="modal-body d-flex container flex-column justify-content-center "> <!-- LOGIN -->
+                          <img src="img/minilogoazul.png" class="col-2 ">   
+                          <div>
+                            <label for="empleado">Nombre del propietario:</label> 
+                            <input type="text" name="nombreempleado1"  value="" placeholder="" size="20" required />
+                          </div><br>
+                          <div>
+                            <label for="empleado">Correo electrónico:</label> 
+                            <input type="text" name="correo1" value="" placeholder="" size="20" required />
+                          </div><br>
+                          <div>
+                            <label for="empleado">Nº de Teléfono:</label> 
+                            <input type="tel" name="telefono1"  value="" placeholder="" size="20" required />
+                          </div><br>
+                          <div>
+                            <label for="empleado">Puesto de Trabajo:</label> 
+                            <select name="equipo">
+                                <optgroup label="Peluquería">
+                                    <option value="value1">Peluquería</option>
+                                    <option value="value2">opción 2</option>
+                                </optgroup>
+                                <optgroup label="Barbería">
+                                    <option value="value3">Barbería</option>
+                                    <option value="value3">opción 3</option>
+                                    <option value="value3">opción 3</option>
+                                </optgroup>
+                            </select> <br><br>
+                            <a href="/registroEmpresa10" class="btn btn-primary" >Continuar</a>
+                          </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal añadir empleado-->
+            <div class="modal fade" id="empleadoModal" tabindex="-1" aria-labelledby="empleadoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="empleadoLabel">Añadir Empleado</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="empleado" class="d-flex container flex-column justify-content-center modal-body "> <!-- LOGIN -->
+                          <img src="img/minilogoazul.png" class="col-2 "><br><br>
+                          <div>
+                            <label for="empleado">Nombre del empleado:</label> 
+                            <input type="text" name="nombreempleado" id="nombreempleado" value="" placeholder="" size="20" required />
+                          </div><br>
+                          <div>
+                            <label for="empleado">Correo electrónico:</label> 
+                            <input type="text" name="correo" id="correo" value="" placeholder="" size="20" required />   
+                          </div><br>
+                          <div>
+                            <label for="empleado">Nº de Teléfono:</label> 
+                            <input type="tel" name="telefono" id="telefono" value="" placeholder="" size="20" required />   
+                          </div><br>
+                          <div>
+                            <label for="empleado">Puesto de Trabajo:</label> 
+                            <select name="equipo">
+                                <optgroup label="Peluquería">
+                                    <option value="value1">Peluquería</option>
+                                    <option value="value2">opción 2</option>
+                                </optgroup>
+                                <optgroup label="Barbería">
+                                    <option value="value3">Barbería</option>
+                                    <option value="value3">opción 3</option>
+                                    <option value="value3">opción 3</option>
+                                </optgroup>
+                            </select> <br><br>
+                            <a href="/registroEmpresa9" class="btn btn-primary" id="continuar">Continuar</a>
+                          </div></div>
+                    </div>
+                </div>
+            </div>
+       
+            <a href="/registroEmpresa10" class="btn btn-primary" >Continuar</a>
+
+        </section>
+    </main>
+
+           <!--Fooooterrrrr-->
+
+           <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+           <!--Fooooterrrrr-->
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+
+

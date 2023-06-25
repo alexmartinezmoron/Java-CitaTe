@@ -1,0 +1,454 @@
+/************************************
+REGLAS GENERALES
+************************************/
+
+/*El carrousel me limita el contenido del body por eso he puesto esto*/
+html,body {
+    height: 100%;
+}
+
+body{
+}
+
+header{
+    /* margin-bottom: 30px; Esto es para pegar completamente la foto al header de arriba */
+    /*background-color: #1b263b;*/
+    background-image: url("img/fondoheader1.png");
+    /* background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url("img/fondoheader1.png");*/
+}
+
+
+headerregistroempresa {
+    background-image: url("img/fondoheader1.png");
+}
+
+
+main{
+    min-height:90vh;
+}
+
+/*Footer y sus propiedades*/
+
+
+.footer-07 {
+    padding: 5px; }
+
+
+.footer-07 {
+    background: #a3de83;
+    background-image: url("img/fondoheader.png");
+}
+.footer-07 a {
+    color: #a3de83; }
+.footer-07 p {
+    color: rgba(255, 255, 255, 0.3);}
+
+.footer-07 .footer-heading {
+    font-size: 30px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-decoration: none;}
+.footer-07 .footer-heading .logo {
+    color: #fff;
+    text-decoration: none;}
+.footer-07 .menu {
+    margin-bottom: 30px; }
+.footer-07 .menu a {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;}
+
+.footer-07 .ftco-footer-social li a {
+    background: transparent;
+}
+
+/*Footer y sus propiedades*/
+
+/* HEADER */
+
+
+/*Desplegable en Registrate para poder elegir Cliente o empresa*/
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/*Tamaño logo citate*/
+#logocitate{
+    width: 100px;
+}
+
+.modal-header{
+    background-color: #1B263B;
+    color: aliceblue;
+
+}
+.modal-footer{
+    background-color: #1B263B;
+    color: aliceblue;
+}
+
+
+
+/* MAIN */
+
+/*Altura de las fotos correspondientes al carrusel*/
+.carousel-item {
+    height: 30vh;
+}
+
+
+/* PERFIL */
+.logo_empresa{max-width: 200px;}
+
+/* FOOTER */
+
+
+
+
+/* FORMULARIOS */
+
+#registrocliente{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#botonlogin{
+    background-color: #1B263B;
+    margin-right: 10px;
+}
+#botonregister{
+    background-color: #1B263B;
+    margin-right: 10px;
+}
+#botoncliente{
+    background-color: #1B263B;
+    color: white;
+
+}
+#botonempresa{
+    background-color: #1B263B;
+    color: white;
+}
+#clienteempresa{
+    background-color: #1B263B;
+}
+#botonidioma{
+    color: #ffffff ;
+
+}
+#botonayuda{
+    color: #ffffff;
+}
+footer{
+    background-color: #E3E4E0;
+}
+/* Reserva servicos cerca de ti*/
+#reservaservicios{
+    background-color: #1B263B;
+    border: #1B263B;
+}
+
+
+/* Reserva servicos cerca de ti*/
+/*Imagen de debajo del Header en Home*/
+
+
+
+.my-custom-container {
+    height: 400px; /* Ajusta la altura deseada */
+    width: 100%; /* Ajusta el ancho deseado */
+    background-size: cover; /* Ajusta la forma en que se muestra la imagen de fondo */
+}
+
+/*Imagen superpuesta home*/
+.superposed-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.superposed-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+#accesologin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/************************************
+Alex
+************************************/
+.cajitas{
+    border: solid;
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 20px;
+}
+
+.cajitas2{
+    text-align: center;
+}
+
+.limpio{
+    border: none;
+
+}
+
+.boton:hover{background: rgb(141, 132, 132);}
+
+.nolink{
+    color:white;text-decoration: none; font-weight: 500;
+}
+.nolink:hover {
+    color: #ffffff;
+}
+
+.meterregistro{
+    background-color: #3f4c63;
+}
+
+
+.titupag{margin-bottom: 50px;}
+
+.cabecera{
+    border: none;
+    border-radius: 0px;
+    margin: 0px;
+    border-bottom: solid rgb(182, 171, 171) 2px;
+    padding: 8px;
+    text-align: center;
+}
+
+.pcentrado{text-align: center;}
+
+#headerregistroempresa2{
+    padding: 20px;
+    color: white;
+}
+
+.calendario{
+    border: solid;
+    border-width: 1px;
+    text-align: center;
+
+}
+
+.calendario2{
+    border: solid;
+    border-width: 1px;
+    text-align: center;
+
+    background-color: grey;
+    padding: 15px
+
+}
+
+.gris{
+    color: grey;
+}
+
+/************************************
+Sandra
+************************************/
+
+/*Correspondiente a la parte quienes somos de
+p1*/
+
+
+#presentacion{
+    text-align: center;
+    font-size: 20px;
+
+}
+#texto{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.botonreservar{
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.botonhora{
+    text-decoration: none;
+    color: black;
+
+}
+
+#headermodal{
+    background-color: rgb(67, 138, 183);
+}
+
+#botoncontinuar{
+    background-color: rgb(67, 138, 183);
+}
+
+/************************************
+Diego
+************************************/
+
+#barradeprogreso{
+    margin-bottom: 10px;
+}
+#continuar{
+    background-color: #1B263B;
+    border-color: #1B263B; ;
+}
+
+.navegacion {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+    background-color: #e6e6e6;
+}
+.navegacion h2{
+    text-align: center;
+}
+
+.navegacion #padding{
+    padding: 20px;
+}
+
+/*REGISTRO EMPRESA 8*/
+/*Desplegable en Registrate para poder elegir Cliente o empresa*/
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/*Altura de las fotos correspondientes al carrusel*/
+.carousel-item {
+    height: 30vh;
+}
+/*Tamaño logo citate*/
+#logocitate{
+    width: 200px;
+}
+
+#logocitatefooter{
+
+    width: 90px;
+
+}
+
+
+/*El carrousel me limita el contenido del body por eso he puesto esto*/
+
+
+section {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 600px;
+    background-color: #e6e6e6;
+}
+section h2{
+    text-align: center;
+}
+#barradeprogreso{
+    margin-bottom: 10px;
+}
+#continuar{
+    background-color: #1B263B;
+    border-color: #1B263B; ;
+}
+
+/*Para modificar el tamaño del carrousel*/
+
+.carousel-item {
+    height: 400px;
+}
+
+/*Color de los valores a rellenar de las tablas*/
+.table thead tr {
+    background-color: #386E9AFF;
+    color: #fff;
+}
+/*Color de los valores a rellenar de las tablas*/
+
+.table thead tr th {
+    font-weight: bold;
+}
+
+.table thead .filtrado {
+    background-color: transparent;
+}
+
+
+
+/*Fotos de fondo en all-entities y entity-details*/
+
+.fondoallentities {
+    background-image: url("img/canva2.png");
+}
+
+.fondodetails{
+    background-image: url("img/fondodetails.png");
+}
+
+/*Fotos de fondo en all-entities y entity-details*/
+
+/*Paginado*/
+
+.listadoempresas {
+    color: inherit; /* Cambia el color según tus necesidades */
+    text-decoration: none;
+}
+
+.registroempresahome {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.homebtn {
+    background-color: black;
+    float: right;
+    margin-top: 15px;
+    color: white; /* opcional, para cambiar el color del texto a blanco */
+}
+
+
+
+
+
+
+
+/*Paginado*/
+
+/*.disponibilidadall{
+/*    color: #ffffff;
+/*}
+/*
+*/
+
+
+

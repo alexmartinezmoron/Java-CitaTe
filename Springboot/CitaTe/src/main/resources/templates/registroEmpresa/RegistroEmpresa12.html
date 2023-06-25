@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+
+</head>
+<body class="container">
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+      <main> <!--Todo el main-->
+        <div class="d-flex justify-content-center" >
+            <h1>El registro ha sido completado</h1>
+        </div> <br>
+
+
+        <div class="nav nav-pills text-center row">
+            <ul >
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page" >Home</a></li>
+            </ul><br>
+            <ul>
+                <li class="nav-item"><a href="/perfil" class="nav-link active" aria-current="page" >Perfil</a></li>
+            </ul>
+        </div>
+<!--        <div class="d-flex justify-content-center">-->
+<!--            <img th:src="@{/img/logoazul.png}" alt="logo2">-->
+
+
+<!--        </div>-->
+
+      </main>
+
+           <!--Fooooterrrrr-->
+
+           <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+           <!--Fooooterrrrr-->
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+
+</body>

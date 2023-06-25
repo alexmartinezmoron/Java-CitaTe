@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Empleados</title>
+
+  <link rel="stylesheet" th:href="@{/CitaTe.css}">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+</br></br></br>
+
+
+<div class="container">
+
+  <h1>Sercios que ofrece esta peluqueria</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nombre del servicio</th>
+      <th>Precio</th>
+      <th>Descripcion</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="catalogoDeServicio : ${empresa.catalogoDeServicios}">
+      <td th:text="${catalogoDeServicio.nombre}"></td>
+      <td th:text="${catalogoDeServicio.precio} + '€' "></td>
+      <td th:text="${catalogoDeServicio.descripcion}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+  <h1>Empleados</h1>
+    <table class="table table-striped">
+      <thead>
+            <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+            </tr>
+      </thead>
+
+      <tbody>
+            <tr th:each="empleado : ${empresa.empleados}">
+                  <td th:text="${empleado.nombreEmpleado}"></td>
+                  <td th:text="${empleado.apellido1Empleado}"></td>
+                  <td>
+                      <a th:href="@{/empleados/details/{id}(id=${empleado.id})}" class="btn btn-primary">Ver</a>
+                  </td>
+            </tr>
+      </tbody>
+    </table>
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

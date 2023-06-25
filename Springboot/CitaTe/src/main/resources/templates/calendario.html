@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--/*  Each token will be replaced by their respective titles in the resulting page. */-->
+    <meta charset="UTF-8">
+    <title>Calendario</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link href="/webjars/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="CitaTe.css">
+
+
+    <script src="/js/app.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${month + ' - ' + year }"></h1>
+    <table class="calendario">
+        <thead>
+        <tr>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Mierloes</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th>Sabado</th>
+            <th>Domingo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="semana : ${mesCompleto}">
+
+                <td th:each="dia : ${semana}">
+                    <div class="calendario2" >
+                        <a th:href="urlcrearrerva" th:if="!${dia.diaNulo}"  th:text="${#strings.substring(dia.fecha.toString(), 8, 10)}"></a>
+
+                        </br>
+
+<!--                        <a class="nolink"  th:each="evento: ${dia.eventos}">-->
+<!--                            <span th:text="${evento.nombre}"></span>-->
+                        </a>
+
+                    </div>
+                </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" th:href="@{calendario?month={month}(month=${month-1})}"> Mes anterior</a>
+
+    <a class="btn btn-primary" th:href="@{calendario?month={month}(month=${month+1})}"> Siguente mes</a>
+
+</div>
+
+<!--Fooooterrrrr-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+<!--Fooooterrrrr-->
+
+
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

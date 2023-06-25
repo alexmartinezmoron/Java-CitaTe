@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+
+<form th:object="${servicioDTO}" th:action="@{/servicios/createServicio}" th:method="POST">
+    <input type="hidden" th:attr="value=${servicioDTO.id}" /> <!-- Campo oculto para el ID -->
+    <label for="tiempo">Tiempo:</label>
+    <input type="number" id="tiempo" name="tiempo" th:attr="value=${servicioDTO.tiempo}" /> <!-- Campo para el tiempo -->
+    <button type="submit">Crear Servicio</button>
+</form>
+
+
+</body>
+</html>

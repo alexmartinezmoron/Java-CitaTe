@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Empleados</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="fondoallentities" >
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+
+</br></br></br>
+
+<div class="container">
+    <h3>Empleados</h3><br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre de Empleado</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+          <!--  <th>Inicio mañana</th> -->
+
+            <!-- Nueva columna para las acciones -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="empleadodto : ${entities}">
+            <td th:text="${empleadodto.nombreEmpleado}"></td>
+            <td th:text="${empleadodto.apellido1Empleado}"></td>
+            <td th:text="${empleadodto.apellido2Empleado}"></td>
+
+            <td>
+                <a th:href="@{/empleados/{id}(id=${empleadodto.id})}" class="btn btn-dark">Editar</a>
+                <a th:href="@{/empleados/delete/{id}(id=${empleadodto.id})}" class="btn btn-danger">Eliminar</a>
+            </td> <!-- Columna para los botones de edición y eliminación -->
+        </tr>
+
+        <!--            <div>-->
+        <!--                <input type="checkbox" name="lunes" id="martes">-->
+        <!--                <label for="martes">Martes</label>-->
+        <!--                <input type="time" name="comienzo" id="comienzo2">-->
+        <!--                <input type="time" name="final" id="final2">-->
+        <!--            </div><br>-->
+        <!--            <div>-->
+        <!--                <input type="checkbox" name="lunes" id="miercoles">-->
+        <!--                <label for="miercoles">Miercoles</label>-->
+        <!--                <input type="time" name="comienzo" id="comienzo3">-->
+        <!--                <input type="time" name="final" id="final3">-->
+        <!--            </div><br>-->
+        <!--            <div>-->
+        <!--                <input type="checkbox" name="lunes" id="jueves">-->
+        <!--                <label for="jueves">Jueves</label>-->
+        <!--                <input type="time" name="comienzo" id="comienzo4">-->
+        <!--                <input type="time" name="final" id="final4">-->
+        <!--            </div><br>-->
+        <!--            <div>-->
+        <!--                <input type="checkbox" name="lunes" id="viernes">-->
+        <!--                <label for="viernes">Viernes</label>-->
+        <!--                <input type="time" name="comienzo" id="comienzo5">-->
+        <!--                <input type="time" name="final" id="final5">-->
+        <!--            </div><br>-->
+        <!--            <div>-->
+        <!--                <input type="checkbox" name="lunes" id="sabado">-->
+        <!--                <label for="sabado">Sabado</label>-->
+        <!--                <input type="time" name="comienzo" id="comienzo6">-->
+        <!--                <input type="time" name="final" id="final6">-->
+        <!--            </div><br>-->
+        <!--            <div>-->
+        <!--                <input type="checkbox" name="lunes" id="domingo">-->
+        <!--                <label for="domingo">Domingo</label>-->
+        <!--                <input type="time" name="comienzo" id="comienzo7">-->
+        <!--                <input type="time" name="final" id="final7">-->
+        <!--            </div><br>-->
+        </tbody>
+    </table>
+
+
+    <div class=" btn" style="background-color: #3f4c63">
+        <a th:class="nolink" href="/empleados/create" >Añadir nuevo Empleado</a>
+    </div>
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

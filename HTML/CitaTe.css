@@ -1,0 +1,245 @@
+/************************************
+REGLAS GENERALES
+************************************/
+
+/*El carrousel me limita el contenido del body por eso he puesto esto*/
+html,body {
+   height: 100%;
+}
+
+body{
+   background: #757F9A;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A); 
+   background: linear-gradient(to right, #D7DDE8, #757F9A); 
+           
+}
+
+
+/************************************
+CLASES PROPIAS 
+************************************/
+
+
+
+
+/************************************
+ESTRUCTURA GENERAL
+************************************/
+header{
+   margin-bottom: 30px;
+  }
+
+main{
+   min-height:90vh;
+}  
+
+footer{
+
+}
+
+
+/************************************
+ESTRUCTURA DETALLADA
+************************************/
+
+/* HEADER */
+
+
+/*Desplegable en Registrate para poder elegir Cliente o empresa*/
+.dropdown:hover .dropdown-menu {
+   display: block;
+}
+/*Tamaño logo citate*/
+#logocitate{
+width: 200px;
+}
+
+
+
+/* MAIN */
+
+/*Altura de las fotos correspondientes al carrusel*/
+.carousel-item {
+   height: 30vh;
+}
+
+
+/* PERFIL */
+.logo_empresa{max-width: 200px;}
+
+/* FOOTER */
+
+
+
+
+/* FORMULARIOS */
+
+#registrocliente{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+#botonlogin{
+ background-color: #1B263B;
+ margin-right: 10px;
+}
+#botonregister{
+ background-color: #1B263B;
+ margin-right: 10px;
+}
+#botoncliente{
+ background-color: #1B263B;
+ color: white;
+ 
+}
+#botonempresa{
+ background-color: #1B263B;
+ color: white;
+}
+#clienteempresa{
+ background-color: #1B263B;
+}
+#botonidioma{
+ color: #ffffff ;
+
+}
+#botonayuda{
+ color: #ffffff;
+}
+footer{
+ background-color: #E3E4E0;
+}
+#reservaservicios{
+ background-color: #1B263B;
+ border: #1B263B;
+}
+#fotoytexto{
+ background-attachment: fixed;
+}
+
+#accesologin{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+
+}   
+
+
+/************************************
+MEDIA QUERIES
+************************************/
+
+
+/************************************
+Alex
+************************************/
+.cajitas{
+   border: solid;
+   padding: 5px;
+   border-radius: 20px;
+   text-align: center;
+   margin: 20px;
+}
+
+.limpio{
+   border: none;
+ 
+}
+
+.boton:hover{background: rgb(141, 132, 132);}
+
+.nolink{
+   color:white;text-decoration: none; font-weight: 500;
+}
+
+.titupag{margin-bottom: 50px;}
+
+.cabecera{
+   border: none;
+   border-radius: 0px;
+   margin: 0px;  
+   border-bottom: solid rgb(182, 171, 171) 2px;
+   padding: 8px;
+   text-align: center;
+ }
+
+ .pcentrado{text-align: center;}
+
+ #headerregistroempresa2{
+   padding: 20px;
+   color: white;
+}
+
+/************************************
+Sandra
+************************************/
+
+/*Correspondiente a la parte quienes somos de 
+p1*/
+#presentacion{
+   text-align: center;
+   font-size: 20px;
+   
+ }
+ #texto{
+   text-align: center;
+   padding-bottom: 40px;
+ }
+
+ .botonreservar{
+   margin-right: 10px;
+   text-decoration: none;
+   color: black;
+ }
+
+ .botonhora{
+   text-decoration: none;
+   color: black;
+
+ }
+
+ #headermodal{
+   background-color: rgb(67, 138, 183);
+ }
+
+ #botoncontinuar{
+   background-color: rgb(67, 138, 183);
+ }
+
+ /************************************
+Diego
+************************************/
+
+#barradeprogreso{
+   margin-bottom: 10px;
+}
+#continuar{
+   background-color: #1B263B;
+   border-color: #1B263B; ;
+}
+
+.navegacion {
+   display: flex;
+   flex-direction: column;
+   border: solid;
+   border-radius: 10px;
+   margin: 0 auto; 
+   max-width: 600px; 
+   background-color: #e6e6e6;    
+}
+.navegacion h2{
+   text-align: center;
+} 
+
+.navegacion #padding{
+   padding: 20px;
+}
+#archivo {
+   display: none;
+   pointer-events: none;
+ }
+ 
+ 
+

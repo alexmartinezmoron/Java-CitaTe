@@ -1,0 +1,27 @@
+// Crear contenedor mysql
+
+docker container run -itd --name SQL-DESARROLLO -e MYSQL_ROOT_PASSWORD=password -p 3308:3306 mysql:latest
+
+----------------------------------------------------
+
+// Hacemos un commit para pasar de tener un contenedor a una imagen
+
+docker commit -m "Cambios dentro de la imagen" -a "autor-pinchapapas" 438a832dbc7b pinchapapas/citate-mysql
+
+----------------------------------------------------
+
+docker images
+
+// Este comando nos vale para ver la imagenes que tneemos creadas
+
+----------------------------------------------------
+
+//Guardamos la imagen en nuestro equipo
+
+
+docker save pinchapapas/citate-mysql > citate-mysql.tar
+
+----------------------------------------------------
+// Cargamos a docker una imagen que tendamos guardada
+
+docker load < citate-mysql.tar

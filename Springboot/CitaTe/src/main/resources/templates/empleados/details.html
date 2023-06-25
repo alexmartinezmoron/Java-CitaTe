@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Servicios</title>
+
+  <link rel="stylesheet" th:href="@{/CitaTe.css}">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+  <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+<div class="container">
+
+  <div class="row">
+    <h1>Servicios que ofrece este empleado</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre del servicio</th>
+        <th>Precio</th>
+        <th>Tiempo</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="servicio : ${empleado.servicios}">
+
+          <td th:text="${servicio.catalogoDeServicio.getNombre()}"></td>
+          <td th:text="${servicio.catalogoDeServicio.precio} + '€'"></td>
+          <td th:text="${servicio.tiempo} + ' min'"></td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+
+      <!--  Calendario-->
+
+      <h1 th:text="${month + ' - ' + year }"></h1>
+      <table class="calendario">
+        <thead>
+        <tr>
+          <th>Lunes</th>
+          <th>Martes</th>
+          <th>Mierloes</th>
+          <th>Jueves</th>
+          <th>Viernes</th>
+          <th>Sabado</th>
+          <th>Domingo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="semana : ${mesCompleto}">
+
+          <!--      Los dias en los que trabajaod sea 1 se pintaran verde, cero rojo-->
+          <!--      Los dias en los que trabajaod sea 1 llevaran un link en el numero, informado el id del usuario (se usara para cotejarlo con el usuario logueado),
+          id empleado y la fecha del dia  parametros que se incluiran como opciones en el get de reservas tal y coomo se hace con page y size al paginar-->
+          <td th:each="dia : ${semana}">
+            <div class="calendario2" >
+              <a th:style="${dia.trabaja == 1} ? 'color:red' : 'color:blue' " th:href="urlcrearrerva" th:if="!${dia.diaNulo}"  th:text="${#strings.substring(dia.fecha.toString(), 8, 10)}"></a>
+              </br>
+
+            </div>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+
+      <a class="btn btn-primary" th:href="@{calendario?month={month}(month=${month-1})}"> Mes anterior</a>
+
+      <a class="btn btn-primary" th:href="@{calendario?month={month}(month=${month+1})}"> Siguente mes</a>
+
+    </div>
+    <div class="col-md-6">
+      <form  role="form" th:action="'/empleados/details/' + ${empleado.id}" th:object="${reserva}" method="post">
+
+        <!--Datos para alta de la reserva-->
+        <h1>Alta de la reserva</h1>
+        <div class="d-flex flex-row align-items-center mb-4">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <input type="date" id="fechaReserva" class="form-control"  maxlength="30" th:field="${reserva.fechaReserva}"/>
+            <label class="form-label" for="fechaReserva">fechaReserva</label>
+          </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <input type="time" id="hora_inicio" class="form-control"  th:field="${reserva.hora_inicio}"/>
+            <label class="form-label" for="hora_inicio">hora_inicio</label>
+          </div>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+          <div class="form-outline flex-fill mb-0">
+            <input type="time" id="hora_fin" class="form-control"  th:field="${reserva.hora_fin}"/>
+            <label class="form-label" for="hora_fin">hora_fin</label>
+          </div>
+        </div>
+        <!--Seleccionar el servicio-->
+        <div th:if="${servicios!=null and !servicios.empty}"  class="form-group col-md-12">
+          <label for="xx" >Lo que tu quierss</label>
+          <select th:field="${reserva.servicioId}" class="form-control"  id="xx">
+            <option value="0">Seleciona uno</option>
+            <option  th:each="elemento : ${servicios}" th:value="${elemento.id}" th:text="${elemento.catalogoDeServicio.nombre}" ></option>
+          </select>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+          <button type="submit" value="guardar" >Registrar reserva</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

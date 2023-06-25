@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+</head>
+<body class="container">
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+
+      <main> <!--Todo el main-->
+        <div class="row justify-content-center align-items-center" >
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                <div class="card mb-4 mb-5 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Plan Básico</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">0 euros<small class="text-body-secondary fw-light">/mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>2 usuarios </li>
+                      <li>2 GB de almacenamiento</li>
+                      <li>Soporte gratuito</li>
+                      <li>Acceso al centro de ayuda</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Accede</button>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                <div class="card mb-4 mb-5 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Plan Intermedio</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">0 euros<small class="text-body-secondary fw-light">/mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>5 usuarios</li>
+                      <li>5 GB de almacenamiento</li>
+                      <li>Soporte gratuito</li>
+                      <li>Acceso al centro de ayuda</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Accede </button>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+                <div class="card mb-4 mb-5 shadow-sm">
+                  <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal">Plan Avanzado</h4>
+                  </div>
+                  <div class="card-body">
+                    <h1 class="card-title pricing-card-title">0 euros<small class="text-body-secondary fw-light">/mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                      <li>10 usuarios</li>
+                      <li>10 GB de almacenamiento</li>
+                      <li>Soporte gratuito</li>
+                      <li>Acceso al centro de ayuda</li>
+                    </ul>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Accede</button>
+                  </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center" id="continuarpricing" >   
+                <a href="registroEmpresa12" class="btn btn-primary" id="continuar">Continuar</a>
+            </div>
+       
+        </div>
+
+      </main>
+
+           <!--Fooooterrrrr-->
+
+           <div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+           <!--Fooooterrrrr-->
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>

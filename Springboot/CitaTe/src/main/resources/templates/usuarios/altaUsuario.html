@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link href="/webjars/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CitaTe.css">
+
+</head>
+<body>
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<div id="registrocliente">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-center">
+            <h1>Regístrate como Cliente</h1>
+        </div>
+        <br>
+
+        <main class="d-flex flex-wrap justify-content-center" id="main">
+
+            <div class="row">
+
+                <form th:object="${usuarioDTO}" th:action="@{/usuarios/alta}" method="POST" th:method="POST">
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" th:field="*{email}">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="pass" name="pass" th:field="*{pass}">
+                            </div>
+                            <div class="mb-3">
+                                <input type="hidden" class="form-control" id="activo" name="activo"
+                                       th:field="*{activo}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre"
+                                       th:field="${clienteDTO.nombreCliente}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Primer Apellido</label>
+                                <input type="text" class="form-control" id="apellido1" name="apellido1"
+                                       th:field="${clienteDTO.apellido1Cliente}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Segundo Apellido</label>
+                                <input type="text" class="form-control" id="apellido2" name="apellido2"
+                                       th:field="${clienteDTO.apellido2Cliente}">
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Telefono</label>
+                                <input type="text" class="form-control" id="telefono" name="apellido2"
+                                       th:field="${clienteDTO.telefono}">
+                            </div>
+
+                            <div style="display: inline-flex;">
+                                <input type="checkbox" name="Terminosdeuso" id="terminosdeuso" value="terminosdeuso"
+                                       required
+                                       style="margin-top: -20px;"/>
+                                <label for="terminosdeuso"> &nbspHe leído y estoy de acuerdo con los <b>Terminos de
+                                    uso</b></label><br/><br>
+                            </div>
+                            <br>
+
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-primary" style="background-color: #1B263B; border: 2px solid #1B263B;"> Guardar </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+</div>
+<br>
+
+</div>
+
+</div>
+<br><br>
+
+
+<!--Fooooterrrrr-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+
+<!--Fooooterrrrr-->
+
+
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</div>
+</body>
+</html>

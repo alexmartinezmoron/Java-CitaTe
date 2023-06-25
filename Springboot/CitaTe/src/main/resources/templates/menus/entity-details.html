@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menus</title>
+
+    <link rel="stylesheet" th:href="@{/CitaTe.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}" rel="stylesheet">
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body class="fondoallentities" >
+
+<!--Header-->
+
+<div th:replace="~{fragmentos/headerRegistroEmpresa :: header}"></div>
+
+<!--Header-->
+
+</br></br></br>
+
+<div class="container">
+    <h2 class="text-center" >Editar Menus</h2>
+    <form th:object="${entity}" th:action="@{/menus/actualizar}" method="POST" th:method="POST">
+
+<!--        Metemos el ID de la valoracion como oculto para que cuando realicemos el post no cree un nuevo registro-->
+<!--        con otro ID auto incrementado-->
+
+
+        <input type="hidden" name="id" id="id"th:field="*{id}">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>URL</th>
+                <th>Descripcion</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" class="form-control" id="url" name="Comentario" th:field="*{url}"></td>
+                <td><input type="text" class="form-control" id="descripcion" name="Puntuacion" th:field="*{descripcion}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <button type="submit" class="btn btn-dark">Guardar</button>
+    </form>
+
+</div>
+
+</br></br></br></br></br></br></br>
+
+
+<!--foooooooooooooooooooooooooooooooooooooooter-->
+
+<div th:replace="~{fragmentos/footer1 :: footer}"></div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
