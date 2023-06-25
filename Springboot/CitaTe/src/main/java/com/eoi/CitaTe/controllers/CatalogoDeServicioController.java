@@ -83,7 +83,8 @@ public class CatalogoDeServicioController extends MiControladorGenerico<Catalogo
         model.addAttribute("entities", entities);
         return url + "all-entities-byEmpresa";
     }
-    /////////////////////////////////////
+
+
 
     @Override
     @GetMapping("/create")
@@ -94,12 +95,21 @@ public class CatalogoDeServicioController extends MiControladorGenerico<Catalogo
     }
 
     @PostMapping(value = {"/actualizar"})
-    public String update(@ModelAttribute CatalogoDeServicioDTO entity) {
-        catalogodeServiciosMapperService.CrearCatalagoDeServicio(entity);
+    public String update(@ModelAttribute CatalogoDeServicioDTO entity, Authentication authentication) {
 
-        return "redirect:/" + url  + "all";
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+        Usuario user = usuarioService.getByEmail(userEmail);
+        // Buscamos la empresa
+        Empresa empresa = user.getEmpleado().getEmpresa();
 
+        catalogodeServiciosMapperService.CrearCatalagoDeServicio2(entity, empresa);
+
+        return "redirect:/" + url  + "allbyLogin";
     }
+
     @Override
     @GetMapping("/{id}")
     public String getById(@PathVariable Object id, Model model) throws MiEntidadNoEncontradaException {

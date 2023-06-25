@@ -16,6 +16,6 @@ public class CatalogoDeServicioDTO {
     private String nombre;
     private  String precio;
     private String descripcion;
-    //private Empresa empresa;
+    private Empresa empresa;
 
 }
