@@ -79,7 +79,8 @@
               </a>
             </li>
             <li>
-              <a href="/catalogoDeServicios/allbyLogin" class="nav-link link-body-emphasis">
+<!--              Solo mostramos el enlace si se han logeado con rolJefe, ademas la ruta tambien esta protegida en el SecurityFilterChain-->
+              <a th:if="${#authorization.expression('hasAuthority(''rolJefe'')')}" href="/catalogoDeServicios/allbyLogin" class="nav-link link-body-emphasis">
                 <i></i>
                 Editar Catálogo de Servicios
               </a>
