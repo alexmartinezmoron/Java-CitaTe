@@ -78,7 +78,7 @@ public class CatalogoDeServicioController extends MiControladorGenerico<Catalogo
         Empresa empresa = user.getEmpleado().getEmpresa();
 
         List<CatalogoDeServicio> entities = catalogodeServiciosMapperService.getRepo().findCatalogoDeServicioByEmpresa(empresa);
-//        List<CatalogoDeServicioDTO> entities = catalogodeServiciosMapperService.getRepo().findCatalogoDeServicioByEmpresa(empresa);
+//      List<CatalogoDeServicioDTO> entities = catalogodeServiciosMapperService.getRepo().findCatalogoDeServicioByEmpresa(empresa);
 //
         model.addAttribute("entities", entities);
         return url + "all-entities-byEmpresa";
