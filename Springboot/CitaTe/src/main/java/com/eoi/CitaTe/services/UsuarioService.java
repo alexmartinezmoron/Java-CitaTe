@@ -140,10 +140,6 @@ public class UsuarioService extends GenericServiceConJPA<Usuario, Long> {
 
 
         usuarioRepository.save(usuario);
-
-
-
-
     }
 
 }

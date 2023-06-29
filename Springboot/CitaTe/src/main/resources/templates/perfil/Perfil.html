@@ -86,7 +86,7 @@
               </a>
             </li>
             <li>
-              <a href="empleados/all-entities" class="nav-link link-body-emphasis">
+              <a th:if="${#authorization.expression('hasAuthority(''rolJefe'')')}" href="/empleados/allbyLogin" class="nav-link link-body-emphasis">
                 <i></i>
                 Editar Empleados
               </a>
