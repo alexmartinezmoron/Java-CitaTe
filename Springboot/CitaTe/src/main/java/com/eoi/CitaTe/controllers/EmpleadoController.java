@@ -155,7 +155,9 @@ public class EmpleadoController extends MiControladorGenerico<Empleado> {
         this.url = entityName + "/";
         try {
             Empleado empleadoDTO = service.getById(id);
+            Usuario usuarioDTO = empleadoDTO.getUsuario();
             model.addAttribute("empleadoDTO", empleadoDTO);
+            model.addAttribute("usuarioDTO", usuarioDTO);
             return url + "entity-details"; // Nombre de la plantilla para mostrar los detalles de la entidad
         } catch (MiEntidadNoEncontradaException ex) {
             model.addAttribute("mensaje", "Entidad no encontrada");
