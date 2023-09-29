@@ -1,7 +1,6 @@
 CitaTe es un proyecto en Maven utilizando Java 20 y Spring boot. 
 CitaTe es una web app diseñada para facitlitar el trabajo de las peluquerias.
-Este proyecto permite a varias empresas darse de alta , asignar trabajadores y servicios especificos a cada trabajo para que los cliente pueden reservar citas 
-y valorar los servicios recicibidos.
+Este proyecto permite a varias empresas darse de alta , asignar trabajadores y servicios especificos a cada trabajo para que los clientes pueden reservar citas y valorar los servicios recibidos.
 
 A la hora de realizar este proyecto he utilizado Jira para organizar los Sprints y GitHub para llevar acabo un correcto control de versiones además de implementar sonar SonarQube en docker para validar los cambios siempre antes de realizar cualquier commit al proyecto.
 
