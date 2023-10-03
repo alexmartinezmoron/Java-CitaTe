@@ -119,7 +119,7 @@ public class FileController {
 
 
         // Devolvemos el nombre de la vista a la que se va a redirigir.
-        return "listFicheros";
+        return "perfil/Perfil";
     }
 
 
