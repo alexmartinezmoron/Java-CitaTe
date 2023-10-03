@@ -34,13 +34,15 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" th:field="*{email}">
+                                <input type="text" class="form-control" id="email" name="email" th:field="*{email}"
+                                       required>
                             </div>
 
 
                             <div class="mb-3">
                                 <label class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="pass" name="pass" th:field="*{pass}">
+                                <input type="password" class="form-control" id="pass" name="pass" th:field="*{pass}"
+                                       required>
                             </div>
                             <div class="mb-3">
                                 <input type="hidden" class="form-control" id="activo" name="activo"
@@ -50,12 +52,14 @@
                             <div class="mb-3">
                                 <label class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre"
+                                       required
                                        th:field="${clienteDTO.nombreCliente}">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Primer Apellido</label>
                                 <input type="text" class="form-control" id="apellido1" name="apellido1"
+                                       required
                                        th:field="${clienteDTO.apellido1Cliente}">
                             </div>
 
@@ -69,6 +73,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Telefono</label>
                                 <input type="text" class="form-control" id="telefono" name="apellido2"
+                                       required
                                        th:field="${clienteDTO.telefono}">
                             </div>
 
