@@ -23,6 +23,8 @@
 
 <body id="contenedor" >
 
+<div th:replace="~{fragmentos/modalFotoPerfil :: modal}"></div>
+
 <header class="d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
   <div class="col">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -114,6 +116,13 @@
             </a>
             <ul class="dropdown-menu text-small shadow">
               <li><a class="dropdown-item" href="#">Settings</a></li>
+
+<!--Boton para abrir un modal referente a la liena 26 la cual remplaza-->
+              <li><a class="dropdown-item" href="#" aria-current="page" data-bs-toggle="modal" data-bs-target="#fotosModal" id="botonFotoPerfil">
+                Foto de Perfil
+                </a>
+              </li>
+
               <li>
                 <hr class="dropdown-divider">
               </li>
