@@ -12,6 +12,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.List;
 
@@ -86,6 +90,8 @@ public class FileController {
      */
 
 
+
+
     @GetMapping("/files")
     public String listAllUploadedFiles(Model model,Authentication authentication) throws IOException {
         //Obtenemos el nombre de usuario logueado
@@ -95,6 +101,7 @@ public class FileController {
         // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
 
         Usuario user = usuarioService.getByEmail(userEmail);
+
 
 //        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
 //        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
