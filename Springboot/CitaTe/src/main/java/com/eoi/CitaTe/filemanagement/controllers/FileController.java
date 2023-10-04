@@ -10,6 +10,8 @@ import com.eoi.CitaTe.security.details.MiUserDetails;
 import com.eoi.CitaTe.services.UsuarioService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,9 +24,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.List;
@@ -89,6 +95,26 @@ public class FileController {
      * @throws IOException si ocurre un error al cargar los archivos
      */
 
+    @GetMapping("/mostrarFotoPerfil")
+    @ResponseBody
+    public byte[] mostrarImagen(Authentication authentication) throws IOException {
+
+
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+
+        Usuario user = usuarioService.getByEmail(userEmail);
+
+
+        // Ruta al directorio donde se almacenan las imágenes
+        String rutaImagen = "uploads/" + user.getId() + "/1.jpg"; // Ruta completa al archivo
+
+        File imagen = new File(rutaImagen);
+        return Files.readAllBytes(imagen.toPath());
+    }
 
 
 
