@@ -5,6 +5,7 @@ import com.eoi.CitaTe.filemanagement.entities.FileDB;
 import com.eoi.CitaTe.filemanagement.models.FileInfo;
 import com.eoi.CitaTe.filemanagement.services.DBFileStorageService;
 import com.eoi.CitaTe.filemanagement.services.FileSystemStorageService;
+import com.eoi.CitaTe.filemanagement.services.FileSystemStorageServiceImpl;
 import com.eoi.CitaTe.security.details.MiUserDetails;
 import com.eoi.CitaTe.services.UsuarioService;
 import lombok.extern.log4j.Log4j2;
@@ -41,6 +42,9 @@ public class FileController {
      */
     @Autowired
     private FileSystemStorageService fileSystemStorageService;
+
+    @Autowired
+    private FileSystemStorageServiceImpl fileSystemStorageServiceImpl;
 
 //    @Autowired
 //    private MessagingService messagingService;
@@ -333,6 +337,35 @@ public class FileController {
 
         // Guardamos el archivo en el servicio de almacenamiento de archivos de usuario.
         fileSystemStorageService.saveUserFile(file, userId);
+
+        // Agregamos un mensaje de éxito a los atributos de redirección.
+        redirectAttributes.addFlashAttribute("message",
+                "¡Se ha subido correctamente el archivo de usuario " + file.getOriginalFilename() + "!");
+
+        // Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
+        return "redirect:/files";
+    }
+
+    @PostMapping("/uploadUserFileToFileSystemWithPersonalName")
+    public String handleUserFileUploadWithPersonalName(@RequestParam("file") MultipartFile file,
+                                       RedirectAttributes redirectAttributes,
+                                       Authentication authentication) {
+
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+
+        Usuario user = usuarioService.getByEmail(userEmail);
+
+        // Obtenemos el ID del usuario.
+        Long userId = Long.valueOf(user.getId());
+
+        // Nuevo nombre para el archivo
+        String name = "1.jpg";
+        // Guardamos el archivo en el servicio de almacenamiento de archivos de usuario.
+        fileSystemStorageServiceImpl.saveUserFileWhitPersonalName(file, userId, name );
 
         // Agregamos un mensaje de éxito a los atributos de redirección.
         redirectAttributes.addFlashAttribute("message",
