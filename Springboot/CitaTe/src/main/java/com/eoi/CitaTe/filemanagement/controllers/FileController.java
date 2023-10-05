@@ -140,6 +140,47 @@ public class FileController {
         return "perfil/Perfil";
     }
 
+    @GetMapping("/perfil")
+    public String listAllFiles(Model model,Authentication authentication) throws IOException {
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+
+        Usuario user = usuarioService.getByEmail(userEmail);
+
+
+//        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
+//        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+
+        List<FileInfo> files = fileSystemStorageService.loadAll();
+//
+//        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento de la base de datos.
+//        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
+//
+//
+        List<FileInfo> userFiles = fileSystemStorageService.loadAllFromUser(user.getId());
+//
+//
+//        // Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
+//        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(user);
+
+        // Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
+        model.addAttribute("files", files);
+
+        // Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
+        model.addAttribute("DBfiles", dbFiles);
+        model.addAttribute("userFiles", userFiles);
+        model.addAttribute("dbUserFiles", dbUserFiles);
+
+
+        // Devolvemos el nombre de la vista a la que se va a redirigir.
+        return "perfil/Perfil";
+    }
+
 
 
     /**
