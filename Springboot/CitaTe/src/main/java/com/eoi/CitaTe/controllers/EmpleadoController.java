@@ -78,19 +78,52 @@ public class EmpleadoController extends MiControladorGenerico<Empleado> {
         model.addAttribute("entities", entities);
         return url + "all-entities"; // Nombre de la plantilla para mostrar todas las entidades
     }
+
+    @GetMapping("/allbyLogin")
+    public String getAllbyLogin(Model model, Authentication authentication) {
+        this.url = entityName + "/";
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+        Usuario user = usuarioService.getByEmail(userEmail);
+
+        // Buscamos la empresa
+        Empresa empresa = user.getEmpleado().getEmpresa();
+
+        List<Empleado> entities = empleadoMapperService.getRepo().findEmpleadoByEmpresa(empresa);
+
+        model.addAttribute("entities", entities);
+        return url + "all-entities-byEmpresa";
+    }
     @Override
     @GetMapping("/create")
     public String create(Model model) {
-        EmpleadoDTO entity = new EmpleadoDTO();
-        model.addAttribute("entity", entity);
+        EmpleadoDTO empleadoDTO = new EmpleadoDTO();
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        model.addAttribute("empleadoDTO", empleadoDTO);
+        model.addAttribute("usuarioDTO", usuarioDTO);
         return url + "entity-details";
     }
+
+
     @PostMapping(value = {"/actualizar"})
-    public String update(@ModelAttribute EmpleadoDTO entity) {
-        empleadoMapperService.CrearEmpleado(entity);
+    public String update(@ModelAttribute EmpleadoDTO empleadoDTO,
+                         @ModelAttribute UsuarioDTO usuarioDTO,
+                         Authentication authentication) {
 
-        return "redirect:/" + url  + "all";
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+        Usuario user = usuarioService.getByEmail(userEmail);
+        // Buscamos la empresa
+        Empresa empresa = user.getEmpleado().getEmpresa();
 
+        empleadoMapperService.CrearEmpleado2(empleadoDTO,usuarioDTO,empresa);
+
+        return "redirect:/" + url  + "allbyLogin";
     }
     @Override
     @GetMapping("/allporempresa")
@@ -121,8 +154,10 @@ public class EmpleadoController extends MiControladorGenerico<Empleado> {
     public String getByIdempre(@PathVariable Object id, Model model) throws MiEntidadNoEncontradaException {
         this.url = entityName + "/";
         try {
-            Empleado entity = service.getById(id);
-            model.addAttribute("entity", entity);
+            Empleado empleadoDTO = service.getById(id);
+            Usuario usuarioDTO = empleadoDTO.getUsuario();
+            model.addAttribute("empleadoDTO", empleadoDTO);
+            model.addAttribute("usuarioDTO", usuarioDTO);
             return url + "entity-details"; // Nombre de la plantilla para mostrar los detalles de la entidad
         } catch (MiEntidadNoEncontradaException ex) {
             model.addAttribute("mensaje", "Entidad no encontrada");

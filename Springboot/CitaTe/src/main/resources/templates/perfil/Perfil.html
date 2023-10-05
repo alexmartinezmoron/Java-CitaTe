@@ -23,6 +23,8 @@
 
 <body id="contenedor" >
 
+<div th:replace="~{fragmentos/modalFotoPerfil :: modal}"></div>
+
 <header class="d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
   <div class="col">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -86,7 +88,7 @@
               </a>
             </li>
             <li>
-              <a href="empleados/all-entities" class="nav-link link-body-emphasis">
+              <a th:if="${#authorization.expression('hasAuthority(''rolJefe'')')}" href="/empleados/allbyLogin" class="nav-link link-body-emphasis">
                 <i></i>
                 Editar Empleados
               </a>
@@ -109,11 +111,21 @@
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
                data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+              <img src="/perfil/mostrarFotoPerfil" alt="" width="32" height="32" class="rounded-circle me-2">
               <span sec:authentication="name"></span>
             </a>
             <ul class="dropdown-menu text-small shadow">
               <li><a class="dropdown-item" href="#">Settings</a></li>
+
+<!--Boton para abrir un modal referente a la liena 26 la cual remplaza-->
+              <li><a class="dropdown-item" th:href="@{/files}" aria-current="page" data-bs-toggle="modal" data-bs-target="#fotosModal" id="botonFotoPerfil">
+
+
+
+                Foto de Perfil
+                </a>
+              </li>
+
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -171,6 +183,8 @@
 
 
       <!--    //////////////  Pruebas//////////////////////////     -->
+
+
 
 
     </main>

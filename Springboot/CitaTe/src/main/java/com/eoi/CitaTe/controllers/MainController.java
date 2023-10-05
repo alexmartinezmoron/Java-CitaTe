@@ -26,10 +26,10 @@ public class MainController {
         return "perfil/CitaTeP1.html";
     }
 
-    @GetMapping("/perfil")
-    public String perfil() {
-        return "perfil/Perfil.html";
-    }
+//    @GetMapping("/perfil")
+//    public String perfil() {
+//        return "perfil/Perfil.html";
+//    }
 
     @GetMapping("/registroEmpresa1")
     public String regEmp1() {

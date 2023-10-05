@@ -5,12 +5,17 @@ import com.eoi.CitaTe.filemanagement.entities.FileDB;
 import com.eoi.CitaTe.filemanagement.models.FileInfo;
 import com.eoi.CitaTe.filemanagement.services.DBFileStorageService;
 import com.eoi.CitaTe.filemanagement.services.FileSystemStorageService;
+import com.eoi.CitaTe.filemanagement.services.FileSystemStorageServiceImpl;
 import com.eoi.CitaTe.security.details.MiUserDetails;
 import com.eoi.CitaTe.services.UsuarioService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,8 +24,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.List;
 
@@ -41,6 +52,9 @@ public class FileController {
      */
     @Autowired
     private FileSystemStorageService fileSystemStorageService;
+
+    @Autowired
+    private FileSystemStorageServiceImpl fileSystemStorageServiceImpl;
 
 //    @Autowired
 //    private MessagingService messagingService;
@@ -82,6 +96,9 @@ public class FileController {
      */
 
 
+
+
+
     @GetMapping("/files")
     public String listAllUploadedFiles(Model model,Authentication authentication) throws IOException {
         //Obtenemos el nombre de usuario logueado
@@ -91,6 +108,7 @@ public class FileController {
         // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
 
         Usuario user = usuarioService.getByEmail(userEmail);
+
 
 //        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
 //        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
@@ -119,7 +137,48 @@ public class FileController {
 
 
         // Devolvemos el nombre de la vista a la que se va a redirigir.
-        return "listFicheros";
+        return "perfil/Perfil";
+    }
+
+    @GetMapping("/perfil")
+    public String listAllFiles(Model model,Authentication authentication) throws IOException {
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+
+        Usuario user = usuarioService.getByEmail(userEmail);
+
+
+//        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento predeterminado.
+//        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+
+        List<FileInfo> files = fileSystemStorageService.loadAll();
+//
+//        // Obtenemos todos los archivos almacenados en el servicio de almacenamiento de la base de datos.
+//        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> dbFiles = dbFileStorageService.getAllFileInfos();
+//
+//
+        List<FileInfo> userFiles = fileSystemStorageService.loadAllFromUser(user.getId());
+//
+//
+//        // Obtenemos todos los archivos asociados al usuario y almacenados en la base de datos
+//        // Para cada archivo, generamos una URL que permita descargar el archivo desde el servidor.
+        List<FileInfo> dbUserFiles = dbFileStorageService.getUserFileInfos(user);
+
+        // Agregamos las URLs de los archivos del servicio de almacenamiento predeterminado al modelo.
+        model.addAttribute("files", files);
+
+        // Agregamos los objetos FileInfo del servicio de almacenamiento de la base de datos al modelo.
+        model.addAttribute("DBfiles", dbFiles);
+        model.addAttribute("userFiles", userFiles);
+        model.addAttribute("dbUserFiles", dbUserFiles);
+
+
+        // Devolvemos el nombre de la vista a la que se va a redirigir.
+        return "perfil/Perfil";
     }
 
 
@@ -333,6 +392,35 @@ public class FileController {
 
         // Guardamos el archivo en el servicio de almacenamiento de archivos de usuario.
         fileSystemStorageService.saveUserFile(file, userId);
+
+        // Agregamos un mensaje de éxito a los atributos de redirección.
+        redirectAttributes.addFlashAttribute("message",
+                "¡Se ha subido correctamente el archivo de usuario " + file.getOriginalFilename() + "!");
+
+        // Redirigimos al usuario a la vista que lista los archivos subidos al servidor.
+        return "redirect:/files";
+    }
+
+    @PostMapping("/uploadUserFileToFileSystemWithPersonalName")
+    public String handleUserFileUploadWithPersonalName(@RequestParam("file") MultipartFile file,
+                                       RedirectAttributes redirectAttributes,
+                                       Authentication authentication) {
+
+        //Obtenemos el nombre de usuario logueado
+        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
+        String userEmail = miUserDetails.getEmail();
+
+        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
+
+        Usuario user = usuarioService.getByEmail(userEmail);
+
+        // Obtenemos el ID del usuario.
+        Long userId = Long.valueOf(user.getId());
+
+        // Nuevo nombre para el archivo
+        String name = "1.jpg";
+        // Guardamos el archivo en el servicio de almacenamiento de archivos de usuario.
+        fileSystemStorageServiceImpl.saveUserFileWhitPersonalName(file, userId, name );
 
         // Agregamos un mensaje de éxito a los atributos de redirección.
         redirectAttributes.addFlashAttribute("message",

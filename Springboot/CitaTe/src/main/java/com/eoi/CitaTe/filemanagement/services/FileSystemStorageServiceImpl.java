@@ -97,6 +97,26 @@ public class FileSystemStorageServiceImpl implements FileSystemStorageService {
         }
     }
 
+    public void saveUserFileWhitPersonalName(MultipartFile file, Long userID, String name) {
+        try {
+            Path userPath = this.root.resolve(userID.toString());
+
+            if(!Files.exists(userPath))
+            {
+                Files.createDirectories(userPath);
+            }
+            Files.copy(file.getInputStream(), this.root.resolve(userID  + "/" + name));
+
+        } catch (Exception e) {
+
+            if (e instanceof FileAlreadyExistsException) {
+                throw new RuntimeException("Ya existe un archivo con ese nombre.");
+            }
+
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
     /**
      * Carga el archivo con el nombre de archivo proporcionado del directorio de almacenamiento de archivos.
      * Si el archivo no existe o no se puede leer, se lanza una RuntimeException.

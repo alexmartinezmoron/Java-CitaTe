@@ -17,6 +17,6 @@ public class ClienteDTO {
     private String apellido1Cliente;
     private String apellido2Cliente;
     private String telefono;
-   // private byte[] icono
+    private byte[] icono;
 
 }

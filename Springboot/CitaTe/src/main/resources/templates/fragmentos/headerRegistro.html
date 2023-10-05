@@ -12,7 +12,8 @@
 
     <!-- Menu Con "Login", "Registrate", "Idioma" y "Ayuda" -->
     <ul class="nav nav-pills text-center" >
-      <li  class="nav-item" sec:authorize="isAuthenticated()"><a th:text="#{text.header.perfil}" href="/perfil" class="nav-link active btn " ></a></li>
+<!--      Utilizamos el GetMapping files para cargar las fotos del usuario-->
+      <li  class="nav-item" sec:authorize="isAuthenticated()"><a th:text="#{text.header.perfil}" th:href="@{/perfil}" class="nav-link active btn " ></a></li>
       <li  class="nav-item" sec:authorize="!isAuthenticated()"><a th:text="#{text.header.login}" href="#" class="nav-link active btn " aria-current="page"  data-bs-toggle="modal" data-bs-target="#loginModal" id="botonlogin"></a></li>
       <li class="nav-item dropdown" sec:authorize="!isAuthenticated()">
         <a th:text="#{text.header.registrate}" class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="botonregister"></a>

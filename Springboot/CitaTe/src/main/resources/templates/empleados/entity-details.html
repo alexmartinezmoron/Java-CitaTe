@@ -25,7 +25,7 @@
 
 <div class="container">
     <h2 class="text-center">Editar Empleado</h2><br>
-    <form th:object="${entity}" th:action="@{/empleados/actualizar}" method="POST" th:method="POST">
+    <form th:object="${empleadoDTO}" th:action="@{/empleados/actualizar}" method="POST" th:method="POST">
 
         <!--        Metemos el ID de la valoracion como oculto para que cuando realicemos el post no cree un nuevo registro-->
         <!--        con otro ID auto incrementado-->
@@ -35,6 +35,8 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Email</th>
+                    <th>Pass</th>
                     <th>Nombre</th>
                     <th>Primer Apellido</th>
                     <th>Segundo Apellido</th>
@@ -42,9 +44,15 @@
             </thead>
             <tbody>
                 <tr>
+
+                    <td><input type="text"     class="form-control" name="email"  id="email"  th:field="${usuarioDTO.email}"></td>
+                    <td><input type="password" class="form-control" name="pass"   id="pass"   th:field="${usuarioDTO.pass}"></td>
+
                     <td><input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombreEmpleado}"></td>
                     <td><input type="text" class="form-control" id="apellido1" name="apellido1" th:field="*{apellido1Empleado}"></td>
                     <td> <input type="text" class="form-control" id="apellido2" name="apellido2" th:field="*{apellido2Empleado}"></td>
+
+
 
                 </tr>
             </tbody>

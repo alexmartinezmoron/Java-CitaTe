@@ -97,7 +97,10 @@ public interface FileSystemStorageService {
      * @return the list
      */
     List<FileInfo> loadAllByFileType(String fileType);
+
+
 }
+
 
 
 
