@@ -95,26 +95,7 @@ public class FileController {
      * @throws IOException si ocurre un error al cargar los archivos
      */
 
-    @GetMapping("/mostrarFotoPerfil")
-    @ResponseBody
-    public byte[] mostrarImagen(Authentication authentication) throws IOException {
 
-
-        //Obtenemos el nombre de usuario logueado
-        MiUserDetails miUserDetails = (MiUserDetails) authentication.getPrincipal();
-        String userEmail = miUserDetails.getEmail();
-
-        // Buscamos al usuario correspondiente al nombre de usuario obtenido anteriormente.
-
-        Usuario user = usuarioService.getByEmail(userEmail);
-
-
-        // Ruta al directorio donde se almacenan las imágenes
-        String rutaImagen = "uploads/" + user.getId() + "/1.jpg"; // Ruta completa al archivo
-
-        File imagen = new File(rutaImagen);
-        return Files.readAllBytes(imagen.toPath());
-    }
 
 
 
