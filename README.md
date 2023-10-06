@@ -7,3 +7,5 @@ A la hora de realizar este proyecto he utilizado Jira para organizar los Sprints
 Modo de empleo:
 Tines varios entornos de desarollo. Es posible utilizar una BBDD en memoria para pruebas (h2) o en el entorno de desarollo permite desplegar un contedor en docker con Mysql solo es necesairo lanzar
 el docker compose.
+
+Para el entorno de desarollo en el cual la base de datos es Mysql solo necesitas tener docker desktop instalado, desde la liea de comando tiene que habrar la carpeta main de citate en la cuel se encuentra el docker compose y lanzar el comando docker compose up -d para desplegar.
